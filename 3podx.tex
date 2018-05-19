@@ -1,0 +1,107 @@
+\documentclass[pdftex,11pt]{article}
+
+%\usepackage[scaled=0.94]{helvet}
+%\renewcommand{\familydefault}{\sfdefault}
+
+\usepackage{fullpage,amssymb,amsmath}
+\usepackage{graphicx}
+\usepackage{natbib}
+\usepackage{times}
+\usepackage[T1]{fontenc}
+\usepackage{color}
+%\usepackage[pdftex,pdfborderstyle={/S/U/W 1},hyperfootnotes=false]{hyperref}
+\usepackage[pdftex,hyperfootnotes=false]{hyperref}
+\hypersetup{pageanchor=false}
+\usepackage{wrapfig}
+\usepackage{bm}
+\usepackage{amsmath}
+\usepackage{stmaryrd}
+\SetSymbolFont{stmry}{bold}{U}{stmry}{m}{n}
+
+%\addtolength{\textheight}{12pt}
+%\addtolength{\topsep}{-5pt}
+\addtolength{\textheight}{4pt}
+\addtolength{\topsep}{-2pt}
+\let\hat\widehat
+\let\tilde\widetilde
+\renewcommand{\P}{\mbox{$\mathbb{P}$}}
+\newcommand{\reals}{\mbox{$\mathbb{R}$}}
+\newcommand{\E}{\mbox{$\mathbb{E}$}}
+\newcommand{\V}{\mbox{$\mathbb{V}$}}
+%\newcommand{\mbx}{\mbox{\boldmath$x$\unboldmath}}
+\newcommand{\mbx}{\boldsymbol{x}}
+\newcommand{\g}{\,\vert\,}
+\long\def\ignore#1{}
+\def\given{\,|\,}
+\def\LL{h_0}
+\newenvironment{proposedwork}{\vskip10pt\setcounter{proposal}{0}}{\vskip10pt}
+\def\task#1{\vskip10pt\stepcounter{proposal}\noindent
+   {\bf \Alph{proposal}. #1.}\enspace}
+
+\bibpunct{(}{)}{;}{a}{,}{,}
+\bibliographystyle{ims}
+
+\newcounter{proposal}
+\newcounter{project}
+\newcounter{subproposal}
+\newcounter{subsubproposal}
+
+\def\msection#1{\vskip30pt\stepcounter{proposal}\setcounter{subproposal}{0}\noindent
+   {\bf\Large \arabic{proposal}.\enspace #1}\vskip8pt\noindent}
+\def\msubsection#1{\vskip10pt\stepcounter{subproposal}\noindent
+   {\bf\large \arabic{proposal}.\arabic{subproposal}.\enspace #1}\enspace\vskip5pt}
+\def\msubsubsection#1{\vskip10pt\stepcounter{subsubproposal}\noindent
+   {\bf\normalsize \arabic{proposal}.\arabic{subproposal}.\arabic{subsubproposal}\enspace #1}\enspace\vskip5pt}
+\def\meme#1{\vskip5pt\noindent {\it\bfseries #1.}\enspace}
+\def\background#1{\vskip5pt\noindent {\it\bfseries Background and
+    Preliminary Results.}\enspace\setcounter{project}{0}}
+\def\project#1{\vskip5pt\noindent {\it\bfseries Proposed Research
+    \stepcounter{project}\Alph{project}:  #1.}\enspace}
+\def\F{\mathcal{F}}
+\let\epsilon\varepsilon
+\def\biobackground#1{\vskip5pt\noindent {\it\bfseries Neuroscience
+Background.}\enspace\setcounter{project}{0}}
+\def\statbackground#1{\vskip5pt\noindent {\it\bfseries Computation and
+Inference Background.}\enspace\setcounter{project}{0}}
+
+\renewcommand{\baselinestretch}{0.985}
+
+\begin{document}
+
+%-----------------------------------------------------
+
+\thispagestyle{empty}
+\input{summary}
+\newpage
+
+
+\setcounter{page}{1}
+\begin{center}
+\ 
+\vskip-30pt
+{{\Large\bf  TRIPODS+X:RES: Investigations at the Interface of \\[5pt]
+Data Science and Neuroscience
+}}\\[10pt]
+{\it Project Description}
+\end{center}
+
+
+%-----------------------------------------------------
+\input{intro}
+\input{objective1}
+\input{objective2}
+%\input{objective3}
+%\input{objective4}
+%\input{objective5}
+\input{prior}
+%\input{impact}
+
+%-----------------------------------------------------
+\clearpage
+\setcounter{page}{1}
+
+\renewcommand{\refname}{References Cited}
+\bibliography{3podx,3podx-clark,3podx-representation,jdl-previous}
+
+
+\end{document}

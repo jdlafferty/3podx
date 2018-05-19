@@ -1,0 +1,134 @@
+\let\tilde\widetilde
+\def\SS{{\mathbb S}}
+\def\X{{\mathbb X}}
+%\def\bb{\mbox{\boldmath$b$}}
+\def\bb{b}
+\def\noisesd{\sigma}
+\def\C{{\mathcal C}}
+\def\A{{\mathcal A}}
+\def\bigbracket#1#2#3{
+\left[ 
+\mbox{\begin{minipage}{#1}{
+\vskip#2
+#3
+\vskip#2
+\mbox{\ }
+}\end{minipage}}
+\right]
+}
+
+\msection{Data Representation (Objective 2)}
+\label{sec:aim2}
+
+The brain stores the same information in several different ways, each
+emphasizing different dimensions of the input. In visual cortex, two
+inputs with similar visual features (e.g., views of the same face,
+prairie landscapes, baseball mitts, etc.) will be stored together. In
+temporal and frontal cortex, two inputs with the same conceptual or
+semantic meaning/function will be stored together (e.g., sports balls,
+cooking utensils, animals, etc.). In the hippocampus, these kinds of
+sensory or semantic overlap are discounted by orthogonalizing similar
+inputs encountered at different times (pattern separation); instead,
+co-occurring inputs that are part of the same event get stored
+together. There are many other dominant organizing dimensions in
+different brain regions (e.g., reward, emotion, modality, task, action,
+etc.). What can we learn about
+how to represent data for efficient computation from this idea of parallel lossy
+representations along different dimensions?
+
+Our broad goal in this component of the project will be to develop algorithms
+for machine representation of data that are informed by such
+understanding of higher-level cognition. Conversely, we
+will leverage developments in embedding algorithms in 
+machine learning for advanced processing of fMRI and cellular
+recordings.
+
+\biobackground{}
+
+\statbackground{}
+Exponential family embeddings are a new way to
+generalize classical methods of finding distributed representations in
+language~\citep{Rudolph:2016b}.
+Consider a corpus of language $\mbx = \{x_1, \ldots, x_n\}$, where
+each $x_i$ is a word from a vocabulary of terms. An exponential family
+embedding has three components: (a) a notion of \textit{context} for
+each data point, e.g., a window of observed words around each word (b)
+a form of the \textit{conditional distribution}, e.g., for text a
+categorical distribution over $V$ items is appropriate and (c) an
+\textit{embedding structure} that describes how parameters are shared
+across data, e.g., for text we typically posit that each term (such as
+``walnut'' or ``bicycle'') shares the same representations wherever it
+appears in the collection.
+An exponential family embedding
+posits two $d$-dimensional latent representations for each term $v$,
+one is the \textit{embedding vector} $\rho_v$ and the other is the
+\textit{context vector} $\alpha_v$, where $d$ is a hyperparameter.  The
+model asserts that each observation is drawn from a conditional
+distribution given its context. 
+Exponential family embeddings generalize many existing methods for
+learning distributed representations, including continuous bag of
+words, negative sampling, and the many other variants of
+word2vec~\citep{Bengio:2003,Mikolov:2013}.  
+
+Fitting such models is
+difficult, and requires robust methods for computation and
+evaluation.  We will lean on and adapt a line of research on black
+box variational inference methods~\citep{Ranganath:2014}, particularly
+for probabilistic programming~\citep{Kucukelbir:2017,Tran:2017}, to be
+able to quickly develop and test our models.
+Variational inference approximates the posterior by fitting a family
+of distributions over the latent variables to be close in KL
+divergence~\citep{Jordan:1999,Blei:2017}.  For simplicity, consider
+the problem of fitting embeddings.  The variational
+distribution is $q(\alpha_{1:V}, \rho_{1:V} ; \nu)$ and we fit the
+variational parameters $\nu$ to be close in KL divergence to
+$p(\alpha_{1:V}, \rho_{1:V} \g \mbx)$.  Recent innovations in
+probabilistic programming also us to do this \textit{generically} and
+\textit{scalably}, easily fitting many types of models to large
+data sets.  This enables the exploration of many variants of the
+models, e.g., different types of contexts, different values of $d$,
+different underlying conditional distributions.
+We support an empirical approach to making these
+choices, using cross-validation with the held-out predictive log
+likelihood~\citep{Wallach:2009a}.  The
+intuition is that a model that provides a good density of the data
+is more likely to be one that is useful and interpretable.
+
+
+\project{Representations beyond co-occurrence statistics}
+Distributed embedding representations in machine learning are almost
+exclusively based on co-occurrence statistics. For instance, when
+constructing embeddings for words in text, names of colors (``red,''
+``blue''...) will be embedded in nearby locations simply because they
+tend to be used together. How can a richer knowledge of representation
+in the brain be used to inspire algorithms for processing text,
+images, and audio? What are other brain-inspired features over which
+co-occurrence can be evaluated?
+
+\project{Embeddings for fMRI data}
+Exponential family embeddings open
+the door to developing more complex embeddings for
+problems in cognitive neuroscience: embeddings for fMRI and other
+types of data, embeddings with a complex notion of context, and
+embeddings that are themselves a part of a larger probabilistic model,
+such as where representations are shared or tied across tasks.  For
+examples of some of these innovations see~\citet{Rudolph:2016b}.
+The approach will be based on the incorporation of a latent variable model,
+for which variational methods can be used for scalable inference, 
+as described above.
+
+
+\project{Time-dependent representations}
+To capture dependence on time, we will build on one of the PIs earlier
+work on dynamic topic models~\citep{Blei:2006d}.  Dynamic topic models
+captured how the latent themes in a collection can grow and shrink and
+change over time.  For example, the theme of ``technology'' in a
+scientific corpus might start with words about electricity and wires
+and end with words about computers and semiconductors.
+Dynamic topic models were developed specifically for language.  We
+will generalize this idea to capture the evolution over time of distributed
+representations.  Unlike dynamic topic models, the fitted model
+will capture multimodal data and the evolution of its latent characteristics.
+In the exponential family
+embedding framework, this amounts to placing a linear dynamic prior on
+the embedding vectors or the context vectors (or both).  
