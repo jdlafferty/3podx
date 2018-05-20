@@ -1,0 +1,196 @@
+\documentclass[pdftex,12pt]{article}
+
+\usepackage{fullpage,amssymb,amsmath}
+\usepackage{graphicx}
+\usepackage{natbib}
+\usepackage{times}
+\usepackage{enumerate}
+\usepackage[T1]{fontenc}
+\usepackage{color}
+\usepackage[pdftex,hyperfootnotes=false]{hyperref}
+\hypersetup{pageanchor=false}
+\usepackage{marvosym,stmaryrd}
+
+\let\hat\widehat
+\let\tilde\widetilde
+\renewcommand{\P}{\mbox{$\mathbb{P}$}}
+\newcommand{\reals}{\mbox{$\mathbb{R}$}}
+\newcommand{\E}{\mbox{$\mathbb{E}$}}
+\newcommand{\V}{\mbox{$\mathbb{V}$}}
+
+\bibpunct{(}{)}{;}{a}{,}{,}
+\bibliographystyle{ims}
+
+\newcounter{proposal}
+\newcounter{project}
+\newcounter{subproposal}
+\newcounter{subsubproposal}
+
+\def\section#1{\vskip15pt\stepcounter{proposal}\setcounter{subproposal}{0}\noindent
+   {\bf\normalsize \arabic{proposal}.\enspace #1}\vskip1pt}
+
+\renewcommand{\baselinestretch}{1.0}
+
+\parskip1pt
+\parindent0pt
+
+\begin{document}
+
+\parindent=0pt
+\pagestyle{empty}
+\vskip-5pt
+\noindent {\large\sc John D. Lafferty -- Biographical sketch}
+\def\surl#1{{\small\sl\url{#1}}}
+\vskip2pt{\bf Address}
+
+\begin{quote}
+Department of Statistics and Data Science\\
+Yale University\\
+24 Hillhouse Avenue\\
+New Haven, CT 06511\\
+Email: {john.lafferty@yale.edu}
+\end{quote}
+
+
+\vskip1pt{\bf Professional Preparation}
+
+\begin{quote}
+
+
+1982--1986, Princeton University\\
+Ph.D. in Mathematics, 1986,  M.A. in Mathematics, 1984\\
+Member of the Program in Applied and Computational Mathematics\\
+Thesis advisor: Edward Nelson
+\vskip3pt
+
+1981--1982, Massachusetts Institute of Technology\\
+Undergraduate work in mathematics and statistics.  Beinecke Fellowship.
+\vskip3pt
+
+1978--1981, Middlebury College \\
+B.A. 1982 {\em summa cum laude\/} with highest
+honors in Mathematics.
+\vskip5pt
+
+\end{quote}
+
+
+\vskip1pt{\bf Appointments}
+
+\begin{quote}
+2017--Present, Yale University \\
+John C. Malone Professor of Statistics and Data Science\\
+Secondary appointment, Department of Computer Science
+\vskip5pt
+
+2013--Present, Toyota Technological Institute at Chicago \\
+Adjoint Professor
+\vskip5pt
+
+2011--2017, University of Chicago \\
+Louis Block Professor of Statistics and Computer Science
+\vskip5pt
+
+1994--2011,  Carnegie Mellon University\\
+Professor of Computer Science, Machine Learning, and Statistics\\[1pt]
+2005--2008, Co-Director, Ph.D. Program in Machine Learning\\
+1998--2004, Associate Professor of Computer Science\\
+1994--1997, Assistance Research Professor
+\vskip5pt
+
+1988--1994, IBM Thomas J. Watson Research Center,
+Yorktown Heights, NY\\
+Research Staff Member, Department of Computer Sciences
+\vskip5pt
+
+1986--1987, Harvard University\\
+Assistant Professor, Benjamin Pierce Lecturer on Mathematics
+\end{quote}
+
+
+\def\secskip{\vskip6pt}
+
+\secskip{\bf Publications Related to Proposal}
+\begin{enumerate}
+
+\item Y. Zhu  and J. Lafferty, ``Quantized minimax estimation over Sobolev ellipsoids,''
+Information and Inference: A Journal of the IMA, Volume 7, Issue 1, 15
+March 2018, pp 31--82.
+
+\item Y. Zhu  and J. Lafferty, ``Distributed nonparametric regression
+  under communication constraints,'' arXiv:1803.01302, to appear in 
+International Conference on Machine Learning (ICML), 2018.
+
+\item N.~Mishra, H.~Zhang, J.~Lafferty and H.~Hoffman, ``A graphical
+  model approach to  minimizing energy under performance constraints,''
+  Architecural Support for Programming Languages and Operating
+  Systems (ASPLOS), 2015.
+
+\item D.~Blei and J.~Lafferty,
+``Dynamic topic models,''
+ {\it Machine Learning: Proceedings of the Twenty-Third International
+  Conference (ICML)}, pp.~113--120, 2006.
+
+\item X. Zhu, Z. Ghahramani and J. Lafferty, ``Semi-supervised
+  learning using Gaussian fields and harmonic functions,'' {\it
+    Proceedings of the International
+    Conference on Machine Learning}, pp. 912--919, 2003.
+\end{enumerate}
+
+
+\secskip{\bf Other Publications}
+\begin{enumerate}
+\item M.~Xu, M.~Chen and J.~Lafferty, 
+``Faithful variable selection for high dimensional convex
+  regression,'' 
+{\it Ann. Statist.}, Vol.~44, Number 6 (2016), 2624--2660.
+
+\item H. Liu, F. Han, M. Yuan, J. Lafferty, and L. Wasserman,
+``High-dimensional semiparametric Gaussian copula graphical models'',
+{\it Ann. Statist.}, Vol.~40, Number 4 (2012), 2293--2326.
+
+\item P.~Ravikumar, M.~Wainwright and J.~Lafferty, 
+ ``High dimensional Ising model selection using $\ell_1$ regularized
+ logistic regression,'' 
+ {\it Anna.~Statist.} Volume 38, Number 3 (2010), 1287--1319.
+
+\item P.~Ravikumar, J.~Lafferty, H.~Liu, and L.~Wasserman,
+``Sparse additive models,'' {\it Journal of the Royal
+  Statistical Society: Series B}, 
+  Volume 71, part 5, pages 1009--1030, 2009.
+
+\item
+S.~Zhou, J.~Lafferty and L.~Wasserman, 
+``Compressed and privacy sensitive sparse regression,''
+{\it IEEE Trans. Information Theory}, Vol.~55, Number 2, February
+2009, pages 846--866.
+\end{enumerate}
+
+
+
+\secskip{\bf Synergistic Activities}
+\begingroup
+\addtolength{\leftmargini}{-.1in}
+\begin{quote}
+Member of the board of the NIPS Foundation, 2010--present.
+Member of the Committee on Applied and Theoretical
+Statistics (CATS), National Research Council of the National Academy
+of Sciences, 2011--2016.
+Member of NORC Advisory Committee on Statistics, Machine Learning and
+High Performance Computing, 2014--present.
+\end{quote}
+\endgroup
+
+\secskip{\bf Recent Collaborators and Other Affiliations}
+
+\begingroup
+\addtolength{\leftmargini}{-.1in}
+\begin{quote}
+David Blei (Princeton),  Rina Barber (Univ.~Chicago), Sabyasachi
+Chatterjee (Univ.~Illinois), John Duchi (Stanford), Chao Gao
+(Univ.~Chicago), Han Liu (Northwestern),
+Larry Wasserman (CMU), Min Xu (Rutgers), Yuancheng Zhu (Univ.~Pennsylvania).
+\end{quote}
+\endgroup
+
+\end{document}
