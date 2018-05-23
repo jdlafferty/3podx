@@ -1017,7 +1017,8 @@ FUNCTION {article}
   new.block
   format.note output
   fin.entry
-  write.url
+  % NTB commented out url printing because couldn't be disabled in Zotero export
+  %write.url
 }
 FUNCTION {book}
 { output.bibitem

@@ -20,30 +20,126 @@
 \msection{Data Representation (Objective 2)}
 \label{sec:aim2}
 
-The brain stores the same information in several different ways, each
-emphasizing different dimensions of the input. In visual cortex, two
-inputs with similar visual features (e.g., views of the same face,
-prairie landscapes, baseball mitts, etc.) will be stored together. In
-temporal and frontal cortex, two inputs with the same conceptual or
-semantic meaning/function will be stored together (e.g., sports balls,
-cooking utensils, animals, etc.). In the hippocampus, these kinds of
-sensory or semantic overlap are discounted by orthogonalizing similar
-inputs encountered at different times (pattern separation); instead,
-co-occurring inputs that are part of the same event get stored
-together. There are many other dominant organizing dimensions in
-different brain regions (e.g., reward, emotion, modality, task, action,
-etc.). What can we learn about
-how to represent data for efficient computation from this idea of parallel lossy
-representations along different dimensions?
+The brain persistently stores the same information in several
+different ways across regions, each emphasizing different dimensions
+of the input. In doing so, different features become readily
+accessible to the computations implemented in these regions. More
+generally, by representing information in different ways, similar
+learning rules are able to automatically aggregate experience along
+different dimensions and thereby extract different and complementary
+knowledge. This can be contrasted with machine learning, both by the
+simple fact that data are stored on disk in one format and that
+finding relevant dimensions is often the output of the learning
+algorithm rather a natural consequence of how the input is structured.
+We will develop algorithms for machine representation of data that are
+informed by such understanding of how the brain represents information
+in different systems and leverage developments in embedding algorithms
+in machine learning for advanced processing of fMRI and cellular
+recordings and the information they contain.
 
-Our broad goal in this component of the project will be to develop algorithms
-for machine representation of data that are informed by such
-understanding of higher-level cognition. Conversely, we
-will leverage developments in embedding algorithms in 
-machine learning for advanced processing of fMRI and cellular
-recordings.
+\biobackground{} Multiple brain systems represent inputs from the
+world and store this information in different memory registers.
+Although these representations are sometimes redundant (e.g., across
+hemispheres in the same brain system), they often emphasize different
+aspects of the input that are extracted via different neural pathways
+or as a result of transformations across brain regions. In visual
+cortex, for example, different inputs with similar appearance (e.g.,
+the faces of siblings, the Grand Canyon from different vistas, bananas
+in a grocery store, etc.) will be stored together. In frontotemporal
+cortex, different inputs with the same conceptual, semantic, or
+functional meaning will be stored together despite differences in
+appearance (e.g., pieces of clothing, cooking utensils, animals in the
+ocean, etc.). In the ventral striatum and orbitofrontal cortex,
+different inputs with the same reward value will be represented
+similarly irrespective of appearance or meaning (although subjective,
+e.g., a favorite t-shirt and a nostalgic meal, an art show and a music
+performance). Finally, in the hippocampus, overlap in appearance,
+meaning, and reward can be discounted in favor of representing inputs
+that co-occur over space or time together (e.g., a sequence of
+landmarks on a commute, the people in a social group, events on a
+memorable date, etc.). There are other dimensions that organize or
+dominate the representations in other brain systems, such as emotion,
+modality, tasks, and motor actions. However, here we will focus on
+visual cortex and the hippocampus, two brain systems with mature
+theories that address the nature of their representations.
 
-\biobackground{}
+After passing from the retina and through subcortical structures, the
+human visual system is a hierarchical set of cortical brain areas
+starting from the first visual area (V1) in the calcarine sulcus of
+the occipital lobe~\citep{Felleman:1991}. There are four primary
+organizing principles from there. First, the visual areas in each
+hemisphere receive input from the space contralateral to where the
+eyes are fixated (i.e., retinotopic), with the input from a given side
+of space projecting to both eyes which converge in ocular dominance
+columns in V1. Second, the areas are arrayed into two
+streams~\citep{Mishkin:1983,Goodale:1992}: the ventral stream passing
+on the inferior surface into the temporal lobe with areas coding for
+the contralateral upper quadrant (V1-V3) and then the contralateral
+hemifield (V4 and beyond) involved in recognizing the identity of
+objects~\citep{Arcaro:2009}; the dorsal stream passing on the superior
+surface into the parietal then frontal lobes with areas coding for the
+contralateral lower quadrant (V1-V3) and hemifield (V3a and beyond)
+involved in processing information about object location and
+action~\citep{Konen:2008}. Third, the visual areas in each stream
+represent stimulus dimensions of increasing complexity: for example,
+from edges in V1, to color and texture in V4, to shape in ventral
+occipital, to object identity and category in inferior temporal (IT)
+cortex~\citep{Grill-Spector:2003,Rousselet:2004}. Finally, paired with
+this increasing complexity is greater flexibility or ''tolerance'' to
+variation in more basic features, both in terms of neurons in higher
+areas having larger areas of space (i.e., receptive fields) over which
+they respond and in terms of invariance of neural representations, in
+IT for example, to size, position, viewpoint, etc.~\citep{Rust:2010}.
+The properties parallel those of deep convolutional neural networks
+for object and scene recognition~\citep{Kriegeskorte:2015}, and in
+fact optimizing the architecture of a deep net for object
+recognition, without consideration of brain data, naturally
+results in a model that predicts neuronal responses in visual
+cortex~\citep{Yamins:2016}. The visual system is thus one of the best
+understood neurobiological systems and also the one that has had the
+greatest impact to date on machine learning.
+
+Most models of ventral visual processing treat IT as the top of
+the hierarchy. However, IT is heavily interconnected with
+the next most anterior areas, perirhinal cortex (PRC) and
+parahippocampal cortex (PHC), which show selectivity for
+objects and scenes,
+respectively~\citep{Barense:2010,Davachi:2006,Ranganath:2012}. The PRC
+and PHC project to the entorhinal cortex (ERC). The ERC in turn
+provides input to the hippocampus, which is critical for storing
+long-term memories~\citep{Squire:1992}. Within the hippocampus, there
+are four key subfields: dentate gyrus (DG), CA3, CA1, and
+subiculum~\citep{Deng:2010,Shohamy:2013}. They are
+connected to form two pathways: the trisynaptic pathway (TSP) from ERC
+to DG, CA3, and CA1; and the monosynaptic pathway (MSP) from ERC to
+CA1~\citep{Schapiro:2017}. The hippocampus also has two sources of
+recurrence that allow it to bridge over time: locally within CA3 and
+as a result of CA1 output to ERC that re-enters as
+input~\citep{Kumaran:2016}. The function of the TSP circuit is to
+memorize specific input patterns from ERC, supporting ''episodic''
+memory for individual moments in space and time (e.g., where I parked
+my car this morning). This poses two computational challenges: the
+patterns need to be learned ''one-shot'' in that we never experience
+the exact same episode twice, and it is critical to avoid interference
+from related memories (e.g., where I parked by car yesterday). The TSP
+solves these challenges with \textit{pattern
+separation}~\citep{Leutgeb:2007,Yassa:2011,Rolls:2016}: large capacity,
+strong inhibition, and partial connectivity in DG and then CA3 lead to
+sparse, orthogonal representations of even highly overlapping ERC
+input patterns that share sensory features (e.g., tend to park in
+the same neighborhood, at the same time of day, in the same vehicle,
+etc.). The resulting memories are complex, unfurling over space and
+time with input from different modalities, and these different
+components are linked via the auto-associative connections in
+CA3~\citep{Wallenstein:1998}. By discounting feature overlap across
+episodes and binding even arbitrary features within episodes, such
+spatiotemporal co-occurrence dominates hippocampal representation, allowing for recall of individual experiences.
+Whereas theoretical models of the hippocampus from the connectionist
+tradition have been around a long time and employ multi-layer
+networks~\citep{McClelland:1995,Norman:2003}, the computational
+properties of the hippocampus (e.g., pattern separation, different
+learning rates, bridging over time, relational binding, etc.) have not
+yet entered the mainstream of machine learning.
 
 \statbackground{}
 Exponential family embeddings are a new way to
