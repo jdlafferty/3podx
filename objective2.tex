@@ -142,36 +142,74 @@ learning rates, bridging over time, relational binding, etc.) have not
 yet entered the mainstream of machine learning.
 
 \statbackground{}
-Exponential family embeddings are a new way to
+``Embedding'' algorithms are an important ingredient in contemporary
+machine learning methodology. An embedding algorithm represents 
+categorical data---notably words in a natural language text---as
+high dimensional ($d\approx 500$) vectors in Euclidean space. 
+This gives a representation that is well suited for downstream
+algorithms; sometimes the embeddings are learned in the first layer of
+a deep neural network ~\citep{Bengio:2003,Mikolov:2013}.  
+
+Embeddings can be extremely useful. Indeed, the popular music
+entertainment site Spotify constructs embeddings of songs from
+millions of user playlists, and uses these as the basis for
+recommending new songs.  (If you liked song $x\in\reals^{500}$,
+perhaps you'll like $x'\in\reals^{500}$, since
+$\|x-x'\|\leq \epsilon$.)\footnote{Notably, this machine learning based
+system eclipsed Pandora, which was based on a hand-constructed
+representation, the ``music genome.''} Yet current embedding
+algorithms are based on little more than a low-rank approximation
+(PCA) of simple coorrence statistics. (In an undergraduate machine
+learning course at Yale, co-PI Lafferty has students prove as a simple
+exercise that the popular \texttt{word2vec} algorithm takes this form.)
+
+Embeddings take a more sophisticated and flexible form when they are based
+on statistical models. For instance, exponential family embeddings are a new way to
 generalize classical methods of finding distributed representations in
 language~\citep{Rudolph:2016b}.
 Consider a corpus of language $\mbx = \{x_1, \ldots, x_n\}$, where
 each $x_i$ is a word from a vocabulary of terms. An exponential family
-embedding has three components: (a) a notion of \textit{context} for
+embedding has three components: (a) a notion of context for
 each data point, e.g., a window of observed words around each word (b)
-a form of the \textit{conditional distribution}, e.g., for text a
+a form of the conditional distribution, e.g., for text a
 categorical distribution over $V$ items is appropriate and (c) an
-\textit{embedding structure} that describes how parameters are shared
+embedding structure that describes how parameters are shared
 across data, e.g., for text we typically posit that each term (such as
 ``walnut'' or ``bicycle'') shares the same representations wherever it
 appears in the collection.
 An exponential family embedding
 posits two $d$-dimensional latent representations for each term $v$,
-one is the \textit{embedding vector} $\rho_v$ and the other is the
-\textit{context vector} $\alpha_v$, where $d$ is a hyperparameter.  The
+one is the embedding vector $\rho_v$ and the other is the
+context vector $\alpha_v$, where $d$ is a hyperparameter.  The
 model asserts that each observation is drawn from a conditional
 distribution given its context. 
 Exponential family embeddings generalize many existing methods for
-learning distributed representations, including continuous bag of
-words, negative sampling, and the many other variants of
-word2vec~\citep{Bengio:2003,Mikolov:2013}.  
+learning distributed representations, including 
+many variants of word2vec~\citep{Bengio:2003,Mikolov:2013}.  
+
+
+\setlength{\columnsep}{20pt}
+\begin{wrapfigure}{R}{0.45\textwidth}
+\centering
+\includegraphics[width=.44\textwidth]{figs/ginsparg}
+\caption{\small Embeddings of words appearing in scientific articles
+posted on the arXiv, mapped to 200 to two dimensions using
+t-SNE \citep{ginsparg}. Constructed using only three months of
+arXiv articles, for a 130,000 word vocbulary---using more data
+leads to better embeddings.
+For an interactive look of the embeddings
+using a Google maps interface, see \href{http://www.cs.cornell.edu/~ginsparg/arxiv/gmaps2.html}{cs.cornell.edu/~ginsparg/arxiv/gmaps2.html}.
+}
+    \label{fig:arxiv}
+    \vskip2pt
+\end{wrapfigure}
 
 Fitting such models is
 difficult, and requires robust methods for computation and
-evaluation.  We will lean on and adapt a line of research on black
+evaluation.  We adapt a line of research on black
 box variational inference methods~\citep{Ranganath:2014}, particularly
-for probabilistic programming~\citep{Kucukelbir:2017,Tran:2017}, to be
-able to quickly develop and test our models.
+for probabilistic programming~\citep{Kucukelbir:2017,Tran:2017}, 
+to be able to quickly develop and test our models.
 Variational inference approximates the posterior by fitting a family
 of distributions over the latent variables to be close in KL
 divergence~\citep{Jordan:1999,Blei:2017}.  For simplicity, consider
@@ -179,16 +217,12 @@ the problem of fitting embeddings.  The variational
 distribution is $q(\alpha_{1:V}, \rho_{1:V} ; \nu)$ and we fit the
 variational parameters $\nu$ to be close in KL divergence to
 $p(\alpha_{1:V}, \rho_{1:V} \g \mbx)$.  Recent innovations in
-probabilistic programming also us to do this \textit{generically} and
-\textit{scalably}, easily fitting many types of models to large
+probabilistic programming and variational autoencoders
+\citep{kingma} (as implemented, for example, in Google TensorFlow) also us to do this generically and
+scalably, easily fitting many types of models to large
 data sets.  This enables the exploration of many variants of the
 models, e.g., different types of contexts, different values of $d$,
 different underlying conditional distributions.
-We support an empirical approach to making these
-choices, using cross-validation with the held-out predictive log
-likelihood~\citep{Wallach:2009a}.  The
-intuition is that a model that provides a good density of the data
-is more likely to be one that is useful and interpretable.
 
 
 \project{Representations beyond co-occurrence statistics}
