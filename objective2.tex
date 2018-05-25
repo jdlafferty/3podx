@@ -155,9 +155,9 @@ entertainment site Spotify constructs embeddings of songs from
 millions of user playlists, and uses these as the basis for
 recommending new songs.  (If you liked song $x\in\reals^{500}$,
 perhaps you'll like $x'\in\reals^{500}$, since
-$\|x-x'\|\leq \epsilon$.)\footnote{Notably, this machine learning based
+$\|x-x'\|\leq \epsilon$.) This machine learning based
 system eclipsed Pandora, which was based on a hand-constructed
-representation, the ``music genome.''} Yet current embedding
+representation, the ``music genome.'' Yet current embedding
 algorithms are based on little more than a low-rank approximation
 (PCA) of simple coorrence statistics. (In an undergraduate machine
 learning course at Yale, co-PI Lafferty has students prove as a simple
@@ -193,12 +193,12 @@ many variants of word2vec~\citep{Bengio:2003,Mikolov:2013}.
 \centering
 \includegraphics[width=.44\textwidth]{figs/ginsparg}
 \caption{\small Embeddings of words appearing in scientific articles
-posted on the arXiv, mapped to 200 to two dimensions using
+posted on the arXiv, mapped from 200 to two dimensions using
 t-SNE \citep{ginsparg}. Constructed using only three months of
 arXiv articles, for a 130,000 word vocbulary---using more data
 leads to better embeddings.
-For an interactive look of the embeddings
-using a Google maps interface, see \href{http://www.cs.cornell.edu/~ginsparg/arxiv/gmaps2.html}{cs.cornell.edu/~ginsparg/arxiv/gmaps2.html}.
+Interactive exploration of the embeddings
+using a Google maps interface: \href{http://www.cs.cornell.edu/~ginsparg/arxiv/gmaps2.html}{cs.cornell.edu/~ginsparg/arxiv/gmaps2.html}.
 }
     \label{fig:arxiv}
     \vskip2pt
