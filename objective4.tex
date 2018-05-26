@@ -1,3 +1,4 @@
+\def\argmin{\mathop{arg\,min}}
 
 \msection{Memory Capacity (Objective 4) }
 \label{sec:aim4}
@@ -109,31 +110,34 @@ high-dimensional learning \citep{mammen1999,tsybakov2004}.
 
 \project{Inversion of nonconvex generative models using memory landmarks}
 One of the many outstanding questions that prevents an understanding
-of the many practical successes of deep learning is the efficacy
-of stochastic gradient descent. Many practical systems
-are constructed with deep convolutional networks using ReLUs;
-these represent hierarchical compression schemes. Their corresponding
-generative counterparts are ``decoder networks'' which take
-a dense Gaussian input and expand it to, for example, a synthetic image.
-We will study models of memory in cognition that are based on
-inverting generative/decoder networks. The recent
-of work of \cite{HandV17} (see also \cite{HandV18}) shows
-that random generative ReLU networks have a ``nice'' decoding
-function. In particular, if $G(z)$ is such a network, and $A$ is
-a random matrix, then the empirical risk function 
-$ f(z) = \|AG(z) - Ay\|_2^2$ is remarkably well-behaved. Specifically,
-under natural conditions on the scaling of the network,
-the function $f(z)$ has no local optima or critical points (outside of
-two neighborhoods around the optima). This opens the door for
-a new line of mathematical work on compressive sensing for generative
-models. We will investigate computational questions motivated
-by metaphorical notions of memory, plasticity and learning in the brain. Suppose that
-the weight matrices of such a network are initialized randomly; thus
-every point has a descent direction. As the network is fed data,
-and the weight matrices are optimized to learn to code for those data,
-the function $f(z)$ becomes highly convex. As the inputs are decoded, 
-the descent directions at intermediate points are noted and remembered
-(or ``memoized''). As the landscape becomes highly nonconvex, these
-previous descent directions are used for searching and decoding
-by gradient descent. 
+of the many practical successes of deep learning is the efficacy of
+stochastic gradient descent. Many practical systems are constructed
+with deep convolutional networks using ReLUs; these represent
+hierarchical compression schemes. Their corresponding generative
+counterparts are ``decoder networks'' which take a dense Gaussian
+input and expand it to, for example, a synthetic image.  We will study
+models of memory in cognition that are based on inverting
+generative/decoder networks. The recent of work of \cite{HandV17} (see
+also \cite{HandV18}) shows that random generative ReLU networks have a
+``nice'' decoding function. In particular, if $G(z)$ is such a
+network, and $A$ is a random matrix, then the empirical risk function
+$ f_x(z) = \|AG(z) - Ax\|_2^2$ is remarkably
+well-behaved. Specifically, under natural conditions on the scaling of
+the network, the function $f(z)$ has no local optima or critical
+points (outside of two neighborhoods around the optima). This opens
+the door for a new line of mathematical work on compressive sensing
+for generative models. We will investigate computational questions
+motivated by metaphorical notions of memory, plasticity and learning
+in the brain in this setting. In particular, suppose that the weight
+matrices of such a network are initialized randomly; thus every point
+has a descent direction. As the network is fed data, and the weight
+matrices are optimized to learn to code for those data.  During this
+learning phase, where the network weights are reconfigured
+(plasticity), they become nonrandom, and the function $f_x(z)$ becomes
+highly nonconvex. We will study a algorithmic technique where the
+descent directions at intermediate points are noted and remembered (or
+``memoized'') during this learning phase. As the landscape becomes
+highly nonconvex, these previous descent directions are used for
+searching and decoding by gradient descent, which is used to assess
+future data against past experience.
 
