@@ -90,7 +90,6 @@ unknown (e.g., because it was not manipulated or measured). Our
 overall goal is to improve decoding accuracy by reconstructing what is
 represented in the mind rather than what is presented to the eyes.
 
-%COULD BE USEFUL IN THE PROJECT DESCRIPTION BELOW Consider the task of reconstructing a person's subjective experience of a movie from their brain data. Existing inverse modeling methods attempt to reproduce the pixels of the photos or movie frames being shown to the person, but if the human brain only represents a subset of this information these models have an inherent performance ceiling. Pixels are not ground truth for the brain, but the problem is that there is no principled way to figure out the internal ``ground truth'' (which can also vary from moment to moment). A useful public dataset for examining this is 17 subjects who watched a 90 minute episode of Sherlock while being scanned with fMRI. We have a frame-by-frame annotation of several dimensions of the movie, and so could try to reconstruct which of these dimensions are present in the brain data and how this attentional trace changes dynamically over time.
 
 \statbackground{} High-dimensional problems suffer from the curse of
 dimensionality. This has a precise mathematical characterization in
@@ -175,8 +174,53 @@ neural network, this can be viewed in the framework of variational auto-encoders
 
 
 \project{Learning complexity under attention}
+Classical statistical theory characterizes the complexity of
+estimation and inference tasks in terms, for example in terms of minimax rates of
+convergence. Parametric problems have risk (expected squared error)
+that scales as $R_n \asymp p/n$ where there are $p$ parameters and $n$
+samples. In the high dimensional sparse regime, research over the past
+decade has shown that the risk scales as $R_n \asymp s \log p/n$ 
+in a rich array of settings, where $s$ is the intrinsic dimension or
+sparsity level. For nonparametric models, for example sparse 
+additive models \citep{Ravikumar:08}, it is known that the risk
+scales (informally) as $\tilde O(s n^{-\alpha})$ where $n^{-\alpha}$ is 
+the minimax a complexity parameter for the underlying function space;
+e.g., for an $m$-th order Sobolev space this is
+$n^{-2m/(2m+1)}$. These complexity results can be established using
+the tools of empirical process theory, covering numbers, and metric
+entropies. We will consider a series of mathematical formalizations
+of attention, and investigate corresponding minimax rates of 
+convergence, and bounds on approxmation errors in different settings.
+As a concrete example, using the attention-based framework indicated
+above, consider a regression model where the regression function 
+has an attention component,
+$$ \E(Y\given x) = \int f(A_t^T x_{S_t}) \, dt$$
+This can be considered as a form of semiparametric single-index model
+\citep{horowitz09,horowitz96,ichimura93,kakade11,negahban12} 
+and we anticipate that we can sharply characterize
+the difficulty of estimating such models. We will also investigate
+the theory latent variable attention models.
 
 \project{Applications to fMRI movie data}
+A useful public
+dataset for examining notions of attention, including machine
+learning models, is comprised of 17 subjects who watched a 90 minute
+episode of Sherlock while being scanned with fMRI
+\citep{chen17,baldassano17}. We have a
+frame-by-frame annotation of several dimensions of the movie.
+Consider the task of reconstructing a person's subjective experience
+of a movie from their brain data. Existing inverse modeling methods
+attempt to reproduce the pixels of the photos or movie frames being
+shown to the person, but if the human brain only represents a subset
+of this information these models have an inherent performance
+ceiling. Pixels are not ground truth for the brain. Yet 
+there likely to be no principled way to characterize the internal ``ground
+truth,'' and the internal focus will vary from moment to moment. 
+We will carry out work that exploits this annotated data set,
+to align the different dimensions of the movie with the brain activity
+present in the fMRI time series. This will provide a measure of
+how the attentional trace of the observer changes dynamically over
+time, which can then be modeled using latent variable models.
 
 
 
