@@ -85,7 +85,27 @@ for a rich family of generative models.
 % optimization with backtracking memories
 % risk bounds as a function of memory in density estimation
 
-\project{Quantized data nonparametric estimation}
+\project{Nonparametric estimation with memory constraints}
+As discussed earlier, recent work has established 
+sharp constrained minimax analysis of nonparametric
+regression under quantization and communication constraints \citep{Zhu:18,Zhu:18b}.
+It is of interest to understand how memory restrictions might affect
+statistical rates of convergence. While this earlier work focuses on
+normal means formulations, a more practical framework for
+nonparametric estimation is local averaging using kernels. In
+classical theory, the actual form of the kernel does not affect the
+rate of convergence, as it enters as a constant in the bias and
+variance calculations. However, the kernel can be viewed as a
+simple formalization of memory---a kernel evaluation $K(x,x')$ asks
+``how similar is the current stimulus $x$ to a previous stimulus $x'$
+observed in my past experience?'' We will consider mathematical models for
+how the kernel $K$ degrades under memory constraints that
+are motivated by empirical findings in cognitive neuroscience,
+and derive minimax results under such memory constraints. The
+Tsybakov low-noise condition will be used to allow for
+high-dimensional learning \citep{mammen1999,tsybakov2004}.
+
+
 
 \project{Optimization for generative models using memory landmarks}
 
