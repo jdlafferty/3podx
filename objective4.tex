@@ -21,7 +21,7 @@ in terms of inversion of generative processes.
 
 \biobackground{}
 Kandel's ``In Search of Memory,'' from sea slugs to humans,
-neural mechanisms of habituation, etc.
+neural mechanisms of habituation, etc.?
 
 \statbackground{} Memory is a foundational theme throughout the broad
 landscape computation. In information theory, the notion of memory was
@@ -50,6 +50,34 @@ game. Insights from neuroscience could inform novel algorithms for
 reducing memory in artificial learning algorithms. Other
 work on tradeoffs in statistical learning includes
 \citep{lucic15tradeoffs}.
+
+A new line of research is shedding light on properties of deep
+learning algorithms. This may ultimately lead to better understanding
+of the ability of deep networks trained with adversarial networks, or
+with variational autoencoders, to generate synthetic data that appears
+natural. We propose to investigate such generative models as a
+computational paradigm for memory formation. 
+Work over the past 3-5 years has analyzed a range nonconvex
+optimization problems, including phase retrieval, compressed
+sensing under sparsity constraints, low-rank matrix
+completion, and randomized sensing of low rank matrices.
+Some of this work is of the nature of the results in this
+paper, that the local optima are either non-existent, or
+can be avoided by simple initialization schemes. Many of
+the results make assumptions of random problem instances.
+Very recent work has established technical results
+that make progress toward showing it is possible to invert randomly constructed
+deep networks. For example, networks are considered that compose multiple Relu-transformed linear transformations,
+which is a simple but often practically effective  deep learning architecture.
+In particular, the results of \cite{Mixon18} make use of the machinery
+of spherical harmonics and Gegengauer polynomials for establishing
+inversion algorithms for certain two-layer networks.
+\cite{HandV17} show that the inversion objective function for such networks, based
+on empirical risk minimization, does not have spurious stationary points,
+so that at any point away from an optimal solution has a descent
+direction. Together with more recent results of \cite{HandV18},
+this line of work begins to establish compressed sensing theory
+for a rich family of generative models. 
 
 % generative models as memory
 % hand, voroninski
