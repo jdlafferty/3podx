@@ -142,27 +142,27 @@ learning rates, bridging over time, relational binding, etc.) have not
 yet entered the mainstream of machine learning.
 
 \statbackground{}
-Embedding algorithms are an important ingredient in contemporary
-machine learning methodology, used to represent
+Data representation algorithms are an important ingredient in contemporary
+machine learning methodology. A particular type, called embeddings, are used to represent
 categorical data---notably words in a natural language text---as
-high dimensional ($d\approx 500$) vectors in Euclidean space. 
-This gives a representation that is well suited for downstream
-algorithms; sometimes the embeddings are learned in the first layer of
-a deep neural network ~\citep{Bengio:2003,Mikolov:2013}.  
+dense, high dimensional ($d\approx 500$) vectors in Euclidean space \citep{Mikolov:2013}.
+Embedding algorithms give representations that are well suited for downstream
+algorithms. Sometimes they are learned in the first layer of
+a deep neural network ~\citep{Bengio:2003}.  
 
 Embeddings can be useful for many data types. For example, the popular
 music entertainment site Spotify constructs embeddings of songs from
 millions of user playlists, and uses these as the basis for
-recommending new songs.  (If you liked song $x\in\reals^{500}$,
-perhaps you'll like the nearby song $x'\in\reals^{500}$.)  This
+recommending new songs.  (``If you liked song $x\in\reals^{500}$,
+perhaps you'll like the nearby song $x'\in\reals^{500}$.'')  This
 machine learning based system eclipsed Pandora, which was based on a
 hand-constructed representation, the ``music genome.'' Yet current
 embedding algorithms such as the popular \texttt{word2vec} algorithm
 are based on little more than a low-rank approximation (PCA) of simple
-cooccurrence statistics.
+co-occurrence statistics.
 
-Embeddings take a more flexible form when they are based
-on statistical models, for instance based on exponential family
+Embeddings algorithms become more flexible when they are based
+on statistical models, for instance using exponential family
 models \citep{Rudolph:2016b,spherical}.
 Consider a corpus of language $\mbx = \{x_1, \ldots, x_n\}$, where
 each $x_i$ is a word from a vocabulary of terms. An exponential family
@@ -182,7 +182,7 @@ model asserts that each observation is drawn from a conditional
 distribution given its context. 
 Exponential family embeddings generalize many existing methods for
 learning distributed representations, including 
-many variants of word2vec~\citep{Bengio:2003,Mikolov:2013}.  
+many variants of word2vec~\citep{Mikolov:2013}.  
 
 
 \setlength{\columnsep}{20pt}
@@ -212,13 +212,13 @@ divergence to $p(\alpha_{1:V}, \rho_{1:V} \g \mbx)$.  Recent
 innovations in black box variational inference~\citep{Ranganath:2014},
 probabilistic programming~\citep{Kucukelbir:2017,Tran:2017}, and
 variational autoencoders
-\citep{kingma} as implemented, for example, in Google TensorFlow, also us to do this generically and
+\citep{kingma} as implemented, for example, in Google TensorFlow, allow us to do this generically and
 scalably, easily fitting many types of models to large
 data sets.  This enables the exploration of many variants of the
 models, e.g., different types of contexts, different values of $d$,
-different underlying conditional distributions. We will use
+and different underlying conditional distributions. We will use
 this framework to develop more advanced and useful embedding
-algorithms, inspired by our knowledge of higher-level cognition.
+algorithms, inspired by current knowledge of higher-level cognition.
 
 
 \project{Representations beyond co-occurrence statistics}
