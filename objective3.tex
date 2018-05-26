@@ -106,25 +106,35 @@ developing estimation and inference algorithms that provably
 recover that structure, with fast running times. The most prominent 
 example in statistics in recent years is the assumption of sparsity, and the explosion of methods based on regularization that recover sparse signals \citep{Tibs:1996,lars,Wain:09a,wasserman:09,Zou:Hastie:Tibs:05,FHT:07}; limited theory and methodology has also been developed for nonparametric problems \citep{LZ:Cosso,Ravikumar:08,lafferty2008rodeo,NPN:09,skeptic,NRRR:NIPS}
 
-We will study mathematical formulations of attention as one approach to making
-assumptions for which learning is tractable in principle.
+We will study mathematical formulations of attention as one approach
+to making assumptions for which learning is tractable in principle.
 In an attention-based model, the object of study is a
 lower-dimensional trace or curve through the high-dimensional input
 space. While the family of curves may be infinite dimensional, a
-locally sparse or ``focused'' representation is intended to make learning statistically and computationally tractable. Such a notion appears in the machine learning literature in different forms. 
-In the deep learning literature, attention-based models were first
-developed in the setting of machine translation, using
-sequence-to-sequence algorithms based on recurrent neural networks
-(RNNs) \citep{bahdanau2014}. The attention mechanism is a type of alignment model,
-which is a key component of statistical translation methods
-\citep{Brown1993}. Attention has been applied to the problem of generating image
+locally sparse or ``focused'' representation is intended to make
+learning statistically and computationally tractable. Rudimentary
+versions of this notion appear in the machine learning literature in
+different forms.  For example, sparse coding representations have
+been extended to be based on hierarchical and local coding schemes
+\citep{WangYYLHG10,YuLL11}, and hierarchy and context have been 
+incorporated into image models \citep{ChangJZBG11,JinG06}. In the
+deep learning literature, attention-based models were first developed
+in the setting of machine translation, using sequence-to-sequence
+algorithms based on recurrent neural networks
+(RNNs) \citep{bahdanau2014}. The attention mechanism is a type of
+alignment model, which is a key component of statistical translation
+methods \citep{Brown1993}. Attention has been applied to the problem of generating image
 descriptions by \cite{showtell}.
 
-Recall from above that an exponential family
-embedding model uses a latent representation of the input and output
-variables. Consider the case of high dimensional density estimation,
-where the goal is to estimate a density $p(x)$ for $x\in\reals^d$.
-A latent variable embedding model takes the form
+We will investigate the introduction of the attention-based metaphor into
+statistical learning using exponential family embedding models, latent
+variables, and multiple embedding characteristics as described in
+Objective 2 above. 
+Recall from above that an exponential family embedding model uses a
+latent representation of the input and output variables. Consider the
+case of high dimensional density estimation, where the goal is to
+estimate a density $p(x)$ for $x\in\reals^d$.  A latent variable
+embedding model takes the form
 $$ p(x) = \int p(z) \exp(\rho(x)^T \alpha(z) - \Psi_{\rho,\alpha}) \, dz$$
 where $z\in \reals^m$ is a latent Gaussian vector,
 $\rho:\reals^d \to \reals^K$ is an embedding of the input space,
