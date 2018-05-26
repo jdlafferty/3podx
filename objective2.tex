@@ -85,7 +85,7 @@ represent stimulus dimensions of increasing complexity: for example,
 from edges in V1, to color and texture in V4, to shape in ventral
 occipital, to object identity and category in inferior temporal (IT)
 cortex~\citep{Grill-Spector:2003,Rousselet:2004}. Finally, paired with
-this increasing complexity is greater flexibility or ''tolerance'' to
+this increasing complexity is greater flexibility or ``tolerance'' to
 variation in more basic features, both in terms of neurons in higher
 areas having larger areas of space (i.e., receptive fields) over which
 they respond and in terms of invariance of neural representations, in
@@ -116,10 +116,10 @@ CA1~\citep{Schapiro:2017}. The hippocampus also has two sources of
 recurrence that allow it to bridge over time: locally within CA3 and
 as a result of CA1 output to ERC that re-enters as
 input~\citep{Kumaran:2016}. The function of the TSP circuit is to
-memorize specific input patterns from ERC, supporting ''episodic''
+memorize specific input patterns from ERC, supporting ``episodic''
 memory for individual moments in space and time (e.g., where I parked
 my car this morning). This poses two computational challenges: the
-patterns need to be learned ''one-shot'' in that we never experience
+patterns need to be learned ``one-shot'' in that we never experience
 the exact same episode twice, and it is critical to avoid interference
 from related memories (e.g., where I parked by car yesterday). The TSP
 solves these challenges with \textit{pattern
@@ -142,30 +142,28 @@ learning rates, bridging over time, relational binding, etc.) have not
 yet entered the mainstream of machine learning.
 
 \statbackground{}
-``Embedding'' algorithms are an important ingredient in contemporary
-machine learning methodology. An embedding algorithm represents 
+Embedding algorithms are an important ingredient in contemporary
+machine learning methodology, used to represent
 categorical data---notably words in a natural language text---as
 high dimensional ($d\approx 500$) vectors in Euclidean space. 
 This gives a representation that is well suited for downstream
 algorithms; sometimes the embeddings are learned in the first layer of
 a deep neural network ~\citep{Bengio:2003,Mikolov:2013}.  
 
-Embeddings can be extremely useful. Indeed, the popular music
-entertainment site Spotify constructs embeddings of songs from
+Embeddings can be useful for many data types. For example, the popular
+music entertainment site Spotify constructs embeddings of songs from
 millions of user playlists, and uses these as the basis for
 recommending new songs.  (If you liked song $x\in\reals^{500}$,
-perhaps you'll like $x'\in\reals^{500}$, since
-$\|x-x'\|\leq \epsilon$.) This machine learning based
-system eclipsed Pandora, which was based on a hand-constructed
-representation, the ``music genome.'' Yet current embedding
-algorithms such as the popular \texttt{word2vec} algorithm 
-are based on little more than a low-rank approximation
-(PCA) of simple cooccurrence statistics. 
+perhaps you'll like the nearby song $x'\in\reals^{500}$.)  This
+machine learning based system eclipsed Pandora, which was based on a
+hand-constructed representation, the ``music genome.'' Yet current
+embedding algorithms such as the popular \texttt{word2vec} algorithm
+are based on little more than a low-rank approximation (PCA) of simple
+cooccurrence statistics.
 
 Embeddings take a more flexible form when they are based
-on statistical models. For instance, exponential family embeddings are a new way to
-generalize classical methods of finding distributed representations in
-language~\citep{Rudolph:2016b}.
+on statistical models, for instance based on exponential family
+models \citep{Rudolph:2016b,spherical}.
 Consider a corpus of language $\mbx = \{x_1, \ldots, x_n\}$, where
 each $x_i$ is a word from a vocabulary of terms. An exponential family
 embedding has three components: (a) a notion of context for
@@ -173,7 +171,7 @@ each data point, e.g., a window of observed words around each word (b)
 a form of the conditional distribution, e.g., for text a
 categorical distribution over $V$ items is appropriate and (c) an
 embedding structure that describes how parameters are shared
-across data, e.g., for text we typically posit that each term (such as
+across data, e.g., for text one may assume that each term (such as
 ``walnut'' or ``bicycle'') shares the same representations wherever it
 appears in the collection.
 An exponential family embedding
@@ -203,25 +201,24 @@ using a Google maps interface: \href{http://www.cs.cornell.edu/~ginsparg/arxiv/g
     \vskip2pt
 \end{wrapfigure}
 
-Fitting such models is
-difficult, and requires robust methods for computation and
-evaluation.  We adapt a line of research on black
-box variational inference methods~\citep{Ranganath:2014}, particularly
-for probabilistic programming~\citep{Kucukelbir:2017,Tran:2017}, 
-to be able to quickly develop and test our models.
-Variational inference approximates the posterior by fitting a family
-of distributions over the latent variables to be close in KL
-divergence~\citep{Jordan:1999,Blei:2017}.  For simplicity, consider
-the problem of fitting embeddings.  The variational
-distribution is $q(\alpha_{1:V}, \rho_{1:V} ; \nu)$ and we fit the
-variational parameters $\nu$ to be close in KL divergence to
-$p(\alpha_{1:V}, \rho_{1:V} \g \mbx)$.  Recent innovations in
-probabilistic programming and variational autoencoders
-\citep{kingma} (as implemented, for example, in Google TensorFlow) also us to do this generically and
+Fitting such models is difficult, and requires robust methods for
+computation and evaluation.  Variational inference approximates the
+posterior by fitting a family of distributions over the latent
+variables to be close in Kullback-Leibler
+divergence~\citep{Jordan:1999,Blei:2017}.  In the case of embeddings,
+the variational distribution is $q(\alpha_{1:V}, \rho_{1:V} ; \nu)$
+and we fit the variational parameters $\nu$ to be close in KL
+divergence to $p(\alpha_{1:V}, \rho_{1:V} \g \mbx)$.  Recent
+innovations in black box variational inference~\citep{Ranganath:2014},
+probabilistic programming~\citep{Kucukelbir:2017,Tran:2017}, and
+variational autoencoders
+\citep{kingma} as implemented, for example, in Google TensorFlow, also us to do this generically and
 scalably, easily fitting many types of models to large
 data sets.  This enables the exploration of many variants of the
 models, e.g., different types of contexts, different values of $d$,
-different underlying conditional distributions.
+different underlying conditional distributions. We will use
+this framework to develop more advanced and useful embedding
+algorithms, inspired by our knowledge of higher-level cognition.
 
 
 \project{Representations beyond co-occurrence statistics}
@@ -231,8 +228,21 @@ constructing embeddings for words in text, names of colors (``red,''
 ``blue''...) will be embedded in nearby locations simply because they
 tend to be used together. How can a richer knowledge of representation
 in the brain be used to inspire algorithms for processing text,
-images, and audio? What are other brain-inspired features over which
-co-occurrence can be evaluated?
+images, and audio? As discussed above, the brain systems roughly
+``embed'' as follows: visual cortex/appearance, frontotemporal
+cortex/function, ventral striatum/reward, hippocampus/co-occurrence.
+We will explore a wide variety of new machine learning models 
+for representing data, using brain function as a inspiration
+and as a rough metaphor for encoding data. For instance,
+one embedding component learned in a reinforcement learning
+setting might correspond to processing in the orbitofrontal cortext;
+another embedding component based on semantic parsing of 
+languages or scenes might correspond to processing in
+the frontotemporal cortext. Steps in such directions, have
+arguably made in recent work \citep{replearn}. The framework of exponential family 
+embeddings and variational inference provide powerful tools
+for this investigation.
+
 
 \project{Embeddings for fMRI data}
 Exponential family embeddings open
