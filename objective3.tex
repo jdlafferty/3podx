@@ -101,13 +101,17 @@ in high dimensions, any local ball will contain very few data
 points. The computational curse is implied by the fact that searching
 over a sufficiently large space of models is often
 intractable. ``Beating'' the curse of dimensionality involves making
-assumptions about the structure of the learning problem. We will study
-mathematical formulations of attention as one approach to making
+assumptions about the structure of the learning problem, and then
+developing estimation and inference algorithms that provably 
+recover that structure, with fast running times. The most prominent 
+example in statistics in recent years is the assumption of sparsity, and the explosion of methods based on regularization that recover sparse signals \citep{Tibs:1996,lars,Wain:09a,wasserman:09,Zou:Hastie:Tibs:05,FHT:07}; limited theory and methodology has also been developed for nonparametric problems \citep{LZ:Cosso,Ravikumar:08,lafferty2008rodeo,NPN:09,skeptic,NRRR:NIPS}
+
+We will study mathematical formulations of attention as one approach to making
 assumptions for which learning is tractable in principle.
 In an attention-based model, the object of study is a
 lower-dimensional trace or curve through the high-dimensional input
-space. 
-
+space. While the family of curves may be infinite dimensional, a
+locally sparse or ``focused'' representation is intended to make learning statistically and computationally tractable. Such a notion appears in the machine learning literature in different forms. 
 In the deep learning literature, attention-based models were first
 developed in the setting of machine translation, using
 sequence-to-sequence algorithms based on recurrent neural networks
