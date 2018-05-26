@@ -126,6 +126,7 @@ alignment model, which is a key component of statistical translation
 methods \citep{Brown1993}. Attention has been applied to the problem of generating image
 descriptions by \cite{showtell}.
 
+\project{Attention-based latent embedding models}
 We will investigate the introduction of the attention-based metaphor into
 statistical learning using exponential family embedding models, latent
 variables, and multiple embedding characteristics as described in
@@ -141,40 +142,42 @@ $\rho:\reals^d \to \reals^K$ is an embedding of the input space,
 and $\alpha: \reals^m \to\reals^K$ is an embedding of the latent
 Gaussian, and $\Psi_{\rho,\alpha}$ is a normalizing constant.
 We will investigate attention-based versions of embedding
-models. Many possibilities exist for doing so. For instance, consider a parameterized curve $t\mapsto (Z_t, S_t)$
+models; many possibilities exist for doing so. For instance, consider a parameterized curve $t\mapsto (Z_t, S_t)$
 where $Z_t$ is a Gaussian vector and $S_t \subset \{1,\ldots, d\}$
 is a subset of the input variables. Define the inner product 
 $\langle x, z\rangle_{\rho,\alpha}
 = \int_{0}^1 \rho\left(x_{S(t)}\right)^T \alpha(Z_t) dt,$
 and the corresponding embedding model
-$ p(x) = \int p(z) \exp\left(\langle x, z\rangle_{\rho,\alpha} - \Psi_{\rho,\alpha}\right) dz.$
+$ p(x) = \int \exp\left(\langle x, z\rangle_{\rho,\alpha} - \Psi_{\rho,\alpha}\right) d\mu(z)$ where $\mu(z)$ is a 
+measure over ``attention paths,'' for example defined in terms of a Gaussian process.
 In another version, consider a graph over $\{1,\ldots, d\}$ with edge
 set $E$, and define the inner product
 $\langle x, z\rangle_{\rho,\alpha}
 = \sum_{(j,k)\in E} \rho(x_j, x_k)^T \alpha(Z_j, Z_k)$
 where $Z$ is now a vector-valued Gaussian random field, 
 and the model can be viewed as a nonparametric graphical model
-\citep{hl18}.
+\citep{hl18}. Returning to the discussion of data representation (Objective 1), 
+if $Z(t)$ is an embedding having different components corresponding
+to ``appearance" (visual cortex), ``function'' (frontotemporal cortex), ``reward"
+(ventral striatum) and co-occurrence (hippocampus), then $S(t)$ might 
+indicate attending to those different latent dimensions in turn.
+
 
 These are thought of as attention-based models as the ``energy''
 $\langle x, z\rangle_{\rho,\alpha}$ is localized to subsets of the
-sample space. Discriminative or regression-based versions of these
+sample space or components of the latent variables. Discriminative or regression-based versions of these
 models are defined similarly. The project will develop variational
 inference algorithms for this family of models. When the mapping 
 $\alpha(z)$ is defined in terms of, for instance, a feed-forward
-neural network, this becomes an instance of a variational auto-encoder
+neural network, this can be viewed in the framework of variational auto-encoders
 \citep{kingma13}.
 
 
-\vskip20pt
-
-\project{Algorithms using variational inference}
 
 \project{Learning complexity under attention}
 
 \project{Applications to fMRI movie data}
 
-\project{Experiments with fMRI to test attention models}
 
 
 
