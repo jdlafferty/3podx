@@ -1,0 +1,62 @@
+
+\msection{Memory Capacity (Objective 4) }
+\label{sec:aim4}
+
+Given the fixed number of neurons in the brain, there must be a
+tradeoff between the number of memories stored and the precision with
+which they are stored. However, there is evidence from human behavior
+that people store a massive number of things in long-term memory with
+incredible detail
+(\href{http://cvcl.mit.edu/MM/download.html}{cvcl.mit.edu/MM}). How is
+this possible? Recent work in deep learning has investigated
+strategies for reducing memory usage, discussed briefly below.
+Computational
+architectures and insights could inform simple experiments to better
+understand the nature of memory usage in living systems.
+In the other direction, our understanding the way memories are
+formed across different levels of cognition, can serve as
+inspiration for computational and statistical models. In particular,
+we will explore computational learning frameworks treating memory
+in terms of inversion of generative processes.
+
+\biobackground{}
+Kandel's ``In Search of Memory,'' from sea slugs to humans,
+neural mechanisms of habituation, etc.
+
+\statbackground{} Memory is a foundational theme throughout the broad
+landscape computation. In information theory, the notion of memory was
+probed in Shannon's landmark paper, which presaged hidden Markov
+models in the discussion of finite state models of language, with a
+state representing the ``residue of influence'' of the previous
+letters \citep{Shannon:48}. A rich mathematical literature exists that
+explores the mathematical properties of finite and infinite stochastic
+processes with respect to notions of memory, including mixing
+properties of chains \citep{pollard84}. Popular neural network models
+for more flexibly handling long-range dependence include LSTMs and
+their variants \citep{sepp97,gers00}. This latter work serves to
+remind us that even simple metaphors for learning in humans, when
+implemented in scalable and easily available code, can lead to methods
+having great impact in contemporary applications.
+
+Recent work in deep learning has investigated
+strategies for reducing memory usage \citep{ChenXZG16}. During a
+forward pass, only a subset of the nodes' activations are kept in
+memory, and the others are discarded. In back-propagation, the
+computation is redone at the forgotten nodes. This induces a trade-off
+between time complexity and memory. The practical problem is to
+determine the subset of nodes to checkpoint, given the network and a
+memory budget. The tradeoff can be thought of in terms a simple pebble
+game. Insights from neuroscience could inform novel algorithms for
+reducing memory in artificial learning algorithms. Other
+work on tradeoffs in statistical learning includes
+\citep{lucic15tradeoffs}.
+
+% generative models as memory
+% hand, voroninski
+% optimization with backtracking memories
+% risk bounds as a function of memory in density estimation
+
+\project{Quantized data nonparametric estimation}
+
+\project{Optimization for generative models using memory landmarks}
+
