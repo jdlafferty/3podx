@@ -103,7 +103,7 @@ intractable. ``Beating'' the curse of dimensionality involves making
 assumptions about the structure of the learning problem, and then
 developing estimation and inference algorithms that provably 
 recover that structure, with fast running times. The most prominent 
-example in statistics in recent years is the assumption of sparsity, and the explosion of methods based on regularization that recover sparse signals \citep{Tibs:1996,lars,Wain:09a,wasserman:09,Zou:Hastie:Tibs:05,FHT:07}; limited theory and methodology has also been developed for nonparametric problems \citep{LZ:Cosso,Ravikumar:08,lafferty2008rodeo,NPN:09,skeptic,NRRR:NIPS}
+example in statistics in recent years is the assumption of sparsity, and the explosion of methods based on regularization that recover sparse signals \citep{Tibs:1996,lars,Wain:09a,wasserman:09,Zou:Hastie:Tibs:05,FHT:07}; methodology has also been developed for nonparametric problems \citep{LZ:Cosso,Ravikumar:08,lafferty2008rodeo,NPN:09,skeptic,NRRR:NIPS}
 
 We will study mathematical formulations of attention as one approach
 to making assumptions for which learning is tractable in principle.
@@ -140,8 +140,7 @@ where $z\in \reals^m$ is a latent Gaussian vector,
 $\rho:\reals^d \to \reals^K$ is an embedding of the input space,
 and $\alpha: \reals^m \to\reals^K$ is an embedding of the latent
 Gaussian, and $\Psi_{\rho,\alpha}$ is a normalizing constant.
-We will investigate attention-based versions of embedding
-models; many possibilities exist for doing so. For instance, consider a parameterized curve $t\mapsto (Z_t, S_t)$
+In an attention-based model, we would consider a parameterized curve $t\mapsto (Z_t, S_t)$
 where $Z_t$ is a Gaussian vector and $S_t \subset \{1,\ldots, d\}$
 is a subset of the input variables. Define the inner product 
 $\langle x, z\rangle_{\rho,\alpha}
@@ -157,8 +156,7 @@ where $Z$ is now a vector-valued Gaussian random field,
 and the model can be viewed as a nonparametric graphical model
 \citep{hl18}. Returning to the discussion of data representation (Objective 1), 
 if $Z(t)$ is an embedding having different components corresponding
-to ``appearance" (visual cortex), ``function'' (frontotemporal cortex), ``reward"
-(ventral striatum) and ``co-occurrence'' (hippocampus), then $S(t)$ might 
+to appearance, function, reward, and co-occurrence, then $S(t)$ might 
 indicate attending to those different latent dimensions in turn.
 
 These are thought of as attention-based models as the ``energy''
@@ -170,34 +168,6 @@ $\alpha(z)$ is defined in terms of, for instance, a feed-forward
 neural network, this can be viewed in the framework of variational auto-encoders
 \citep{kingma13}.
 
-
-\project{Learning complexity under attention}
-Classical statistical theory characterizes the complexity of
-estimation and inference tasks in terms, for example in terms of minimax rates of
-convergence. Parametric problems have risk (expected squared error)
-that scales as $R_n \asymp p/n$ where there are $p$ parameters and $n$
-samples. In the high dimensional sparse regime, research over the past
-decade has shown that the risk scales as $R_n \asymp s \log p/n$ 
-in a rich array of settings, where $s$ is the intrinsic dimension or
-sparsity level. For nonparametric models, for example sparse 
-additive models \citep{Ravikumar:08}, it is known that the risk
-scales (informally) as $\tilde O(s n^{-\alpha})$ where $n^{-\alpha}$ is 
-the minimax a complexity parameter for the underlying function space;
-e.g., for an $m$-th order Sobolev space this is
-$n^{-2m/(2m+1)}$. These complexity results can be established using
-the tools of empirical process theory, covering numbers, and metric
-entropies. We will consider a series of mathematical formalizations
-of attention, and investigate corresponding minimax rates of 
-convergence, and bounds on approxmation errors in different settings.
-As a concrete example, using the attention-based framework indicated
-above, consider a regression model where the regression function 
-has an attention component,
-$$ \E(Y\given x) = \int f(A_t^T x_{S_t}) \, dt$$
-This can be considered as a form of semiparametric single-index model
-\citep{horowitz09,horowitz96,ichimura93,kakade11,negahban12} 
-and we anticipate that we can sharply characterize
-the difficulty of estimating such models. We will also investigate
-the theory latent variable attention models.
 
 \project{Applications to fMRI movie data}
 A useful public
@@ -212,13 +182,41 @@ attempt to reproduce the pixels of the photos or movie frames being
 shown to the person, but if the human brain only represents a subset
 of this information these models have an inherent performance
 ceiling. Pixels are not ground truth for the brain. Yet 
-there likely to be no principled way to characterize the internal ``ground
-truth,'' and the internal focus will vary from moment to moment. 
+there is likely to be no principled way to characterize the internal ``ground
+truth.'' Moreover, the internal focus will vary from moment to moment. 
 We will carry out work that exploits this annotated data set,
 to align the different dimensions of the movie with the brain activity
 present in the fMRI time series. This will provide a measure of
 how the attentional trace of the observer changes dynamically over
 time, which can then be modeled using latent variable models.
+
+\project{Learning complexity under attention}
+Classical statistical theory characterizes the complexity of
+estimation and inference tasks in terms of minimax rates of
+convergence. Parametric problems have risk (expected squared error)
+that scales as $R_n \asymp p/n$ when there are $p$ parameters and $n$
+samples. In the high dimensional sparse regime, research over the past
+decade has shown that the risk scales as $R_n \asymp s \log p/n$ 
+in a rich array of settings, where $s$ is the intrinsic dimension or
+sparsity level. For nonparametric sparse additive
+models \citep{Ravikumar:08}, it is known that the risk
+scales (informally) as $\tilde O(s n^{-\alpha})$ where $n^{-\alpha}$ is 
+the minimax rate for the underlying function space;
+e.g., for an $m$-th order Sobolev space we have
+$\alpha = 2m/(2m+1)$. These complexity results can be established using
+the tools of empirical process theory, covering numbers, and metric
+entropies. We will consider a series of mathematical formalizations
+of attention, and investigate corresponding minimax rates of 
+convergence, and bounds on approxmation errors in different settings.
+As a concrete example, consider a regression model where the regression function 
+has an attention component, expressed as 
+$$ \E(Y\given x) = \int f(A_t^T x_{S_t}) \, dt.$$
+This can be considered as a form of semiparametric single-index model
+\citep{horowitz09,horowitz96,ichimura93,kakade11,negahban12} 
+and we anticipate that we can characterize
+the minimax complexity of estimating such models. We will also investigate
+the theory latent variable attention models.
+
 
 
 
