@@ -32,7 +32,7 @@ simple fact that data are stored on disk in one format and that
 finding relevant dimensions is often the output of the learning
 algorithm rather a natural consequence of how the input is structured.
 We will develop algorithms for machine representation of data that are
-informed by such understanding of how the brain represents information
+informed by our understanding of how the brain represents information
 in different systems and leverage developments in embedding algorithms
 in machine learning for advanced processing of fMRI and cellular
 recordings and the information they contain.
@@ -144,7 +144,7 @@ yet entered the mainstream of machine learning.
 \statbackground{}
 Data representation algorithms are an important ingredient in contemporary
 machine learning methodology. A particular type, called embeddings, are used to represent
-categorical data---notably words in a natural language text---as
+categorical data---for example words in a natural language text---as
 dense, high dimensional ($d\approx 500$) vectors in Euclidean space \citep{Mikolov:2013}.
 Embedding algorithms give representations that are well suited for downstream
 algorithms. Sometimes they are learned in the first layer of
@@ -250,7 +250,7 @@ In the other direction, from machine learning to cognitive
 neuroscience, we believe that latent variable models and exponential family embeddings are
 promising tools for advanced data analysis for fMRI.
 [{\it Nick -- if you want to write a few sentences about the methodologies
-that dominate fMRI analysis now, I can then try to conjecture about
+that dominate fMRI analysis now, I can then try to comment on
 how new machine learning methodologies might be applied.}]
 
 
@@ -259,15 +259,15 @@ As discussed above, known computational properties of the hippocampus
 including pattern separation, different learning rates, and bridging
 over time, have not yet entered the mainstream of machine learning.
 We will study new learning architectures that attempt to mimic, even
-if in a very superficial sense, these capabilities in cognition.  To
-capture dependence on time, we will build on one of the PIs earlier
-work on dynamic topic models~\citep{Blei:2006d}.  Dynamic topic models
-captured how the latent themes in a collection can grow and shrink and
-change over time.  By introducing multiple latent time series threads
-in such a model, each having a different time scale, we can model
-different learning rates in a dynamic model.  Dynamic topic models
-were developed specifically for language.  We will generalize this
-idea to capture the evolution over time of distributed
-representations.  In the exponential family embedding framework, this
-amounts to placing a linear dynamic prior on the embedding vectors or
-the context vectors, or both.
+if only as a computational metaphor, these capabilities in cognition.
+To capture dependence on time, we will earlier work on dynamic topic
+models~\citep{Blei:2006d}.  Dynamic topic models capture how the
+latent themes in a collection can grow and shrink and change over
+time.  By introducing multiple latent time series threads in such a
+model, each having a different time scale, we can model different
+learning rates in a dynamic model.  Dynamic topic models were
+developed specifically for language.  We will generalize this idea to
+capture the evolution over time of distributed representations.  In
+the exponential family embedding framework, this amounts to placing a
+linear dynamic prior on the embedding vectors or the context vectors,
+or both.

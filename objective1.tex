@@ -84,7 +84,7 @@ points in space.}
 \end{wrapfigure}
 
 \statbackground{}
-Classic statistical theory studies the difficulty of estimation under
+Statistical theory studies the difficulty of estimation under
 various models, and attempts to find the optimal estimation
 procedures.  Such studies usually assume that all of the collected
 data are available to construct the estimators.  Recent research
@@ -98,26 +98,24 @@ aggregated from the multiple locations to form the final
 estimate. However, the communication between machines may be
 limited. In such a setting, it is important to understand how the
 statistical risk of estimation degrades as the communication budget
-becomes more limited.
+becomes more constrained.
 
 The so-called CEO problem, first studied in the EE 
 community in the context of rate-distortion-theory theory, treats a
 similar distributed estimation problem \citep{berger1996ceo,
-  viswanathan1997quadratic}.  More recently, several studies have
+  viswanathan1997quadratic}.  Recently, several studies have
 focused on more specific statistical tasks and models, including mean
 estimation, regression, principal eigenspace estimation, and discrete
 density estimation \citep{zhang2013information, shamir2014fundamental,
   battey2015distributed, braverman2016communication,
   diakonikolas2017communication, fan2017distributed,
   lee2017communication, shang2017computational}. Most of this existing
-research focuses on parametric and discrete models, where the
+research treats parametric and discrete models, where the
 parameter of interest has finite dimension.  In a nonparametric
 setting, the effective dimension of the problem typically grows with
 the sample size, and these results no longer apply.
 Other results have been obtained on these problems in the normal means
-model of
-nonparametric estimation.  The normal means model 
-arises naturally when representing an estimator in terms of an
+model of nonparametric estimation, which arises naturally when representing an estimator in terms of an
 orthogonal
 basis \citep{johnstone2002function,tsybakov:2008}.  One
 result gives a sharp constrained minimax analysis of nonparametric
