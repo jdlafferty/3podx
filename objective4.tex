@@ -3,25 +3,70 @@
 \msection{Memory Capacity (Objective 4) }
 \label{sec:aim4}
 
-Given the fixed number of neurons in the brain, there must be a
-tradeoff between the number of memories stored and the precision with
-which they are stored. However, there is evidence from human behavior
-that people store a massive number of things in long-term memory with
-incredible detail
-(\href{http://cvcl.mit.edu/MM/download.html}{cvcl.mit.edu/MM}). How is
-this possible? Recent work in deep learning has investigated
-strategies for reducing memory usage, discussed briefly below.
-Computational
-architectures and insights could inform simple experiments to better
-understand the nature of memory usage in living systems.
-In the other direction, our understanding the way memories are
-formed across different levels of cognition, can serve as
+Given that the number of neurons and synapses in the brain is fixed,
+to a first approximation, there must a trade-off between the number of
+memories that can be stored and the fidelity with which they are
+stored. This is reflected in memory errors, interference, competition,
+and decay. However, there is also evidence from human behavior that
+people store a massive number of items in long-term memory with
+incredible detail~\citep{Brady:2011}. How is this possible?
+Computational architectures and insights could inform simple
+experiments to better understand the nature of memory usage in living
+systems. For example, recent work in deep learning has investigated
+strategies for reducing memory usage. In the other direction, our
+understanding of the way memories are stored in the brain can serve as
 inspiration for computational and statistical models. In particular,
-we will explore computational learning frameworks treating memory
-in terms of inversion of generative processes.
+we will explore learning frameworks treating memory in terms of
+inversion of generative processes.
 
-\biobackground{}
+\biobackground{}Human memory is a paradox, at once exquisite, as when
+a photograph transports us back through time to relive a past event,
+and at other times elusive and unreliable, as when trying to recall a
+colleague's name. Indeed, most cognitive neuroscience research on
+human memory views it as adaptively fallible and
+distorted~\citep{Schacter:2011}. Unlike a hard drive, related
+memories overlap and interact with each other in the brain even when
+supposedly dormant, leading to the creation of false memories and forgetting of competing memories~\citep{Kim:2014,Wimber:2015}. In
+this context, it is surprising that
+humans~\citep{Standing:1973,Brady:2008} and non-human
+primates~\citep{Woloszyn:2012,Meyer:2018} can remember
+hundreds or thousands of visual images with remarkable detail. For
+example, ~\citet{Brady:2008} presented human subjects with 2,500
+objects for 3 s each. Memory was tested afterward by having them
+choose which of two objects presented on each trial had been studied
+before. Critically, one of the objects was an exact match to earlier
+(i.e., familiar target) and the other object (i.e., novel foil) varied
+in similarity to the target. If the studied objects remained in
+memory despite long delays and many intervening items, subjects
+should reliably choose the target. Insofar as these memories
+are detailed and precise, accuracy should be high even when the novel
+foil was highly similar to the target (e.g., if the target
+was a breadbox with a loaf of bread inside, a highly similar ''state
+change'' foil would be the same breadbox and loaf, but with the loaf
+sitting in front). Indeed, accuracy on such trials was 87\% on average
+relative to 50\% chance, for thousands of objects seen once, which was
+only a little worse than if the foil (93\%) was completely unrelated
+and coarser memory would suffice (e.g., breadbox vs. remote control).
 
+These kinds of detailed, one-shot (or \textit{episodic}) memories,
+formed within minutes or hours, are thought to be initially dependent
+on the hippocampus (see Objective 2). This raises the question of how
+such a small mass of tissue is able to store thousands of images in a
+short time without much loss in precision. Indeed, the problem of the
+storage capacity of the hippocampus has been studied for a long time.
+For example, ~\citet{Marr:1971} argued that 100,000 memories could be
+stored there, corresponding roughly to the number of seconds in a day,
+and that these memories would be offloaded to higher-capacity
+neocortex during sleep each night, resetting the counter. There are
+several possible solutions to this problem, including reducing the
+number of units used for each memory (i.e., sparse coding), increasing
+the number of units available for representation, or accelerating
+forgetting and decay~\citep{McNaughton:1987}, as well as by expanding
+the building blocks and sites of memory beyond synapses to include
+biochemical cascades~\citep{Fusi:2005}. More generally, theoretical
+estimates of the storage capacity of neural networks with distributed
+memories suggest that it is a fraction of the number of units
+and also depends on connectivity~\citep{Hopfield:1982,Brunel:2016}.
 
 \statbackground{} Memory is a foundational theme throughout the broad
 landscape computation. In information theory, the notion of memory was
