@@ -11,6 +11,10 @@
 \def\c{\ccell}
 \def\d{\dcell}
 \def\e{\ecell}
+\def\yale{\bcell}
+\def\brown{\acell}
+\def\both{\bcell}
+
 
 \def\topic#1{\multicolumn{13}{c}{}\\
   \multicolumn{1}{l}{\bf #1 } & \multicolumn{12}{c}{} \\[3pt] \hline}
@@ -21,54 +25,40 @@
 \def\one{\numb{1}}
 \def\four{\multicolumn{1}{c|}{\ffour}}
 \def\col{C}
-\def\yale{Y}
 \def\stan{S}
 \def\rice{R}
 
-\begin{figure*}
+%\begin{figure*}
 \noindent
 \begin{small}
 \begin{center}
-{\large\bf Project Schedule}
-\vskip15pt
+\mbox{\ }\vskip20pt
 \setlength{\tabcolsep}{3pt}    
 \renewcommand{\arraystretch}{1.2}
 \begin{tabular}{|>{\arraybackslash}m{2.5in}|c|c|c|c||c|c|c|c||c|c|c|c|}
 \hline 
-\multirow{2}{*}{\small \bf Task (Responsible sites)} & \multicolumn{4}{c}{\bf
+\multirow{2}{*}{\small \bf Activity} & \multicolumn{4}{c}{\bf
   Year 1} \vline & \multicolumn{4}{c}{\bf Year 2} \vline &
 \multicolumn{4}{c|}{\bf Year 3} \\[3pt] \cline{2-13}
 & \one & \two & \three & \four & \one & \two & \three & \four & \one & \two & \three & \four \\ \hline
 
-\topic{Embeddings and models}
-Tables and figures (\col,\stan)& \a & \a & \a & \a & \a & \a & \a & \a & \a & \a & \a & \a  \\ \hline
-Equations (\rice,\yale) & \a & \a & \a & \a & \a & \a & \a & \a & \a & \a & \a & \a  \\ \hline
-Modeling readers (\col) & & & & & \a & \a & \a  & \a & \a & \a & &  \\ \hline
-Modeling style (\stan) & & & & &  & & & \a & \a & \a & \a & \a \\ \hline
-Dynamic concept models (\col) & & & & & & & &  & \a & \a & \a & \a \\ \hline
+%\topic{Research projects}
+%Distributed processing & \a & \a & \a & \a & \a & \a & \a & \a & \a & \a & \a & \a  \\ \hline
+%Data representation  & \a & \a & \a & \a & \a & \a & \a & \a & \a & \a & \a & \a  \\ \hline
+%Attentional filtering & & & & & \a & \a & \a  & \a & \a & \a & &  \\ \hline
+%Memory capacity & & & & &  & & & \a & \a & \a & \a & \a \\ \hline
 
-\topic{Extraction and labeling}
-Interfaces for weak supervision (\stan) & \b & \b & \b & \b & \b & \b & \b & \b & & & & \\ \hline
-Cross-modal extraction (\stan) & & & & \b & \b & \b & \b & \b & \b & \b & \b & \b \\ \hline
-Fast, deep PCA (\stan) & \b & \b & \b & \b & \b & \b & \b & \b& & & & \\ \hline
-Knowledge networks (\rice, \stan,\yale) & & & \b & \b & \b & \b & \b & \b& \b & \b & \b & \b \\ \hline
+%\topic{Project coordination}
+\multicolumn{13}{c}{}\\[-12pt]
+\hline
 
-\topic{Document generation}
-Hierarchical generation (\stan) & & & & & & & & & & \c & \c & \c  \\ \hline
-Edit models (\stan) & & & & & & & & & \c & \c & \c & \c \\ \hline
-Equation transformation (\yale) & & & & & & & & \c & \c & \c & \c & \c \\ \hline
-
-\topic{Applications and systems}
-arXiv app (\col) & & & & & & & & & & & & \d \\ \hline 
-ADS app (\yale) & & & & & & & & & & & \d & \d \\ \hline 
-Document transformation (\stan) & & & & & & & & & & & \d & \\ \hline 
-
-\topic{Evaluation}
-Extraction/generation eval (\stan,\rice) & & & & & & & & & & \e & \e & \e \\ \hline 
-arXiv evaluation (\col) & & & & & & & & & & & & \\ \hline 
-ADS evaluation (\yale) & & & & & & & & & & & & \\ \hline 
-Quality evaluation (\rice) & & & & & & & & & & & & \\ \hline
+Coordination with TRIPODS & & \brown & & & & \brown & & & & \brown & & \\ \hline
+Executive committee meetings & \b & \b & \b & \b & \b & \b & \b & \b & \b & \b & \b & \b \\ \hline
+Student exchange & & & \brown & & & & \yale & & & & \yale & \\ \hline
+Workshop &  &  &  & \yale &  &  &  & \brown & & & & \brown \\ \hline
 \end{tabular}
 \end{center}
 \end{small}
-\end{figure*}
+%\end{figure*}
+
+
