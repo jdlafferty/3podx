@@ -27,10 +27,11 @@
 
 \SetSymbolFont{stmry}{bold}{U}{stmry}{m}{n}
 
-%\addtolength{\textheight}{12pt}
-%\addtolength{\topsep}{-5pt}
-\addtolength{\textheight}{4pt}
+\addtolength{\topmargin}{-5pt}
+\addtolength{\topskip}{-5pt}
+\addtolength{\textheight}{40pt}
 \addtolength{\topsep}{-2pt}
+
 \let\hat\widehat
 \let\tilde\widetilde
 \renewcommand{\P}{\mbox{$\mathbb{P}$}}
@@ -55,7 +56,7 @@
 \newcounter{subproposal}
 \newcounter{subsubproposal}
 
-\def\msection#1{\vskip20pt\stepcounter{proposal}\setcounter{subproposal}{0}\noindent
+\def\msection#1{\vskip25pt\stepcounter{proposal}\setcounter{subproposal}{0}\noindent
    {\bf\Large \arabic{proposal}.\enspace #1}\vskip1pt\noindent}
 \def\msubsection#1{\vskip10pt\stepcounter{subproposal}\noindent
    {\bf\large \arabic{proposal}.\arabic{subproposal}.\enspace #1}\enspace\vskip5pt}

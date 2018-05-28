@@ -13,7 +13,7 @@
 \def\e{\ecell}
 \def\yale{\bcell}
 \def\brown{\acell}
-\def\both{\bcell}
+\def\both{\ecell}
 
 
 \def\topic#1{\multicolumn{13}{c}{}\\
@@ -24,17 +24,22 @@
 \def\two{\numb{Q2}}
 \def\one{\numb{Q1}}
 \def\four{\multicolumn{1}{c|}{\ffour}}
-\def\col{C}
-\def\stan{S}
-\def\rice{R}
+
+
+\vskip10pt
+\noindent 
+The following table summarizes the primary research and coordination
+activities of the project, together with a proposed timeline. 
+Although the main research objectives 
+can be pursued concurrently, a natural staging of the research is shown.
 
 %\begin{figure*}
 \noindent
 \begin{small}
 \begin{center}
-\mbox{\ }\vskip20pt
+\mbox{\ }\vskip5pt
 \setlength{\tabcolsep}{3pt}    
-\renewcommand{\arraystretch}{1.2}
+\renewcommand{\arraystretch}{1.1}
 \begin{tabular}{|>{\arraybackslash}m{2.5in}|c|c|c|c||c|c|c|c||c|c|c|c|}
 \hline 
 \multirow{2}{*}{\small \bf Activity} & \multicolumn{4}{c}{\bf
@@ -43,19 +48,21 @@
 & \one & \two & \three & \four & \one & \two & \three & \four & \one & \two & \three & \four \\ \hline
 
 %\topic{Research projects}
-%Distributed processing & \a & \a & \a & \a & \a & \a & \a & \a & \a & \a & \a & \a  \\ \hline
-%Data representation  & \a & \a & \a & \a & \a & \a & \a & \a & \a & \a & \a & \a  \\ \hline
-%Attentional filtering & & & & & \a & \a & \a  & \a & \a & \a & &  \\ \hline
-%Memory capacity & & & & &  & & & \a & \a & \a & \a & \a \\ \hline
+\multicolumn{13}{c}{}\\[-5pt]
+\hline
+Distributed processing & \both & \both & \both & \both & \both & \both & \both & & & & &  \\ \hline
+Data representation  &  &  & \both & \both & \both & \both & \both & \both & \both & & &  \\ \hline
+Attentional filtering & & & & & \both & \both & \both & \both & \both & \both & &  \\ \hline
+Memory capacity & & & & &  & & \both & \both & \both & \both & \both & \both\\ \hline
 
 %\topic{Project coordination}
-\multicolumn{13}{c}{}\\[-12pt]
+\multicolumn{13}{c}{}\\[-5pt]
 \hline
 
 Coordination with TRIPODS & & \brown & & & & \brown & & & & \brown & & \\ \hline
 Executive committee meetings & \b & \b & \b & \b & \b & \b & \b & \b & \b & \b & \b & \b \\ \hline
 Student exchange & & & \brown & & & & \yale & & & & \yale & \\ \hline
-Workshop &  &  &  & \yale &  &  &  & \brown & & & & \brown \\ \hline
+Workshop &  &  &  & \yale &  &  &  & \brown & & & & \\ \hline
 Undergraduate data neuroscience lab &  &  \yale &  & &  & \yale &  & & & \yale & & \\ \hline
 \end{tabular}
 \end{center}
