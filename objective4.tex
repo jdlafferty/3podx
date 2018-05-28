@@ -106,13 +106,10 @@ of the results make assumptions of random problem instances.  Very
 recent work has established technical results toward showing it is
 possible to invert randomly constructed deep networks. For example,
 \cite{HandV17} consider networks that compose multiple ReLU-transformed affine
-maps, which is a simple but often practically effective deep learning
-architecture.  
-\cite{HandV17} show that the inversion objective function for such networks, based
+maps, and show that the inversion objective function for such networks, based
 on empirical risk minimization, does not have spurious stationary
-points, so that at any point away from an optimal solution has a
-descent direction. The related results of \cite{Mixon18} make use of
-the machinery of spherical harmonics and Gegengauer polynomials for
+points. Thus there is a descent direction at any point away from an optimal solution.
+\cite{Mixon18} make use of the machinery of spherical harmonics and Gegengauer polynomials for
 establishing inversion algorithms for certain two-layer
 networks. Together with more recent results of \cite{HandV18}, this
 line of work begins to establish compressed sensing theory for a rich
@@ -154,24 +151,22 @@ schemes. Their corresponding generative counterparts are ``decoder
 networks'' which take a dense Gaussian input and expand it to, for
 example, a synthetic image.  We will study models of memory in
 cognition that are based on inverting generative/decoder networks. The
-recent of work of \cite{HandV17} (see also \cite{HandV18}) shows that
-if $G(z)$ is such a network with random weights, and $A$ is a random
-matrix, then the empirical risk function $ f_x(z) = \|AG(z) -
-Ax\|_2^2$ is remarkably well-behaved. Specifically, under natural
-conditions on the scaling of the network size, the function $f_x(z)$
-has no local optima or critical points (outside of two neighborhoods
-around the optima). We will investigate computational questions in
-this setting motivated by simplified notions of memory, plasticity and
-learning in the brain. In particular, suppose that the weight matrices
-of such a network are initialized randomly; thus every point has a
-descent direction. As the network is fed data, the weight matrices are
-optimized to learn to code for those data.  During this learning
-phase, where the network weights are reconfigured (plasticity), they
-become nonrandom, and the function $f_x(z)$ becomes highly
-nonconvex. We will study algorithmic techniques where the descent
-directions at intermediate points are remembered (or ``memoized'')
-during this learning phase. As the landscape becomes highly nonconvex,
-these previous descent directions are landmarks used for searching and
-decoding the nonconvex objective by gradient descent. The learned
-decoder is used to assess future data against past experience.
+work \cite{HandV17} mentioned above shows that if $G(z)$ is such a
+network with random weights, and $A$ is a random matrix, then the
+empirical risk function $ f_x(z) = \|AG(z) - Ax\|_2^2$ is remarkably
+well-behaved. Specifically, under natural conditions on the scaling of
+the network size, the function $f_x(z)$ has no local optima or
+critical points (outside of two neighborhoods around the optima). We
+will investigate computational questions in this setting motivated by
+simplified notions of memory, plasticity and learning in the
+brain. For example, as the network is fed data, the initially random
+weight matrices are optimized to learn to code for those data.  During
+this learning phase, the weights are reconfigured (plasticity), and
+the function $f_x(z)$ becomes highly nonconvex. We will study
+algorithmic techniques where the descent directions at intermediate
+points are remembered (or ``memoized'') during this learning phase. As
+the landscape becomes highly nonconvex, these previous descent
+directions are landmarks used for searching and decoding the nonconvex
+objective by gradient descent. The learned decoder is used to assess
+future data against past experience.
 
