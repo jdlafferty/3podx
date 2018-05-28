@@ -204,7 +204,7 @@ many variants of word2vec~\citep{Mikolov:2013}.
 \centering
 \includegraphics[width=.44\textwidth]{figs/ginsparg}
 \caption{\small Embeddings of words appearing in scientific articles
-posted on the arXiv, mapped from 200 to two dimensions using
+posted on arXiv, mapped from 200 to two dimensions using
 t-SNE \citep{ginsparg}. Constructed using only three months of
 arXiv articles, for a 130,000 word vocabulary---using more data
 leads to better embeddings.
@@ -237,36 +237,44 @@ algorithms, inspired by current knowledge of higher-level cognition.
 
 \project{Representations beyond co-occurrence statistics}
 Distributed embedding representations in machine learning are almost
-exclusively based on co-occurrence statistics. For instance, when
+always based on co-occurrence statistics. For instance, when
 constructing embeddings for words in text, names of colors (``red,''
-``blue''...) will be embedded in nearby locations simply because they
+``blue''...) will be nearby because they
 tend to be used together. How can a richer knowledge of representation
-in the brain be used to inspire algorithms for processing text,
-images, and audio? As discussed above, the brain systems roughly
-``embed'' as follows: visual cortex/appearance, frontotemporal
-cortex/function, ventral striatum/reward, hippocampus/co-occurrence.
+in the brain inspire algorithms for processing text,
+images, and audio? As discussed above, brain systems 
+``embed'' in different ways, for example: visual cortex/appearance, frontotemporal
+cortex/concepts, ventral striatum/reward, hippocampus/co-occurrence.
 We will explore a wide variety of new machine learning models 
 for representing data, using brain function as inspiration
 for coding different aspects of data. For instance,
 one embedding component learned in a reinforcement learning
-setting might correspond to processing in the orbitofrontal cortext;
-another embedding component based on semantic parsing of 
-languages or scenes might correspond to processing in
+setting might correspond to processing in orbitofrontal cortext;
+another embedding component based on semantic parsing of scenes might correspond to processing in
 the frontotemporal cortex. 
 %Steps in such directions, have
 %rguably made in recent work \citep{replearn}. 
 The framework of exponential family embeddings and variational
 inference provide powerful tools for this investigation.
 
-
-%\project{Models for fMRI data}
-%In the other direction, from machine learning to cognitive
-%neuroscience, we believe that latent variable models and exponential family embeddings are
-%promising tools for advanced data analysis for fMRI.
-%[{\it Nick -- if you want to write a few sentences about the methodologies
-%that dominate fMRI analysis now, I can then try to comment on
-%how new machine learning methodologies might be applied.}]
-
+\project{Enriched models for fMRI data}
+In the other direction, from machine learning to cognitive neuroscience,
+latent variable models and exponential family embeddings
+are promising tools for advanced fMRI analysis. In particular,
+embedding models have been used to decode fMRI activity patterns while
+human subjects viewed words~\citep{Mitchell:2008}, listened to
+stories~\citep{Huth:2016}, and watched movies~\citep{Vodrahalli:2017},
+but in all of these cases the embeddings were derived from word
+co-occurrences in text. The resulting semantic features are mapped onto
+voxel activity patterns, allowing for prediction of the semantic content
+of the brain at test. To the extent that voxels do not
+represent semantic information, however, their feature weights will
+be low and they will not contribute to the reconstruction. By learning
+multiple embeddings in the project above, such as for visual, semantic,
+reward, and spatiotemporal features, we will better capture the richness
+of brain function with these models and improve the ability to decode
+the contents of mind from a public movie-watching dataset~\citep[as used
+in][]{Vodrahalli:2017}.
 
 \project{Time-dependent, multiscale representations}
 As discussed above, known computational properties of the hippocampus
@@ -275,13 +283,13 @@ over time, have not yet entered the mainstream of machine learning.
 We will study new learning architectures that attempt to mimic, even
 if only as a computational metaphor, these capabilities in cognition.
 To capture dependence on time, we will earlier work on dynamic topic
-models~\citep{Blei:2006d}.  Dynamic topic models capture how the
+models~\citep{Blei:2006d}. Dynamic topic models capture how the
 latent themes in a collection can grow and shrink and change over
-time.  By introducing multiple latent time series threads in such a
+time. By introducing multiple latent time series threads in such a
 model, each having a different time scale, we can model different
-learning rates in a dynamic model.  Dynamic topic models were
+learning rates. Dynamic topic models were
 developed specifically for language.  We will generalize this idea to
-capture the evolution over time of distributed representations.  In
+capture the evolution of distributed representations over time. In
 the exponential family embedding framework, this amounts to placing a
 linear dynamic prior on the embedding vectors or the context vectors,
 or both.
