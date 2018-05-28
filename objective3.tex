@@ -49,12 +49,12 @@ Methods have been developed in recent years to infer
 mental experience from brain data, including
 colors~\citep{Brouwer:2009}, scenes~\citep{Naselaris:2009},
 faces~\citep{Cowen:2014}, and locations~\citep{Sprague:2016}. These 
-reconstruction or inverted encoding models
-involve: (1) specifying a basis set of channels that tile the
-dimension of interest; (2) for each stimulus, predicting the activation of each
-channel given its v on
-that dimension; (3) forva training set of fMRI data, modeling the
-observed neural responses to these stimuli in each voxel as a weighted
+reconstruction or inverted encoding models generally
+involve (Fig. 5): (1) specifying a basis set of channels that tile the
+dimension of interest; (2) predicting the activation of each
+channel given the position of each stimulus on that dimension; 
+(3) for a training set of fMRI data, modeling the observed neural 
+responses to these stimuli in each voxel as a weighted
 sum of the predicted channel activations; (4) this results in an
 estimated weight matrix of the extent to which each channel is encoded
 in each voxel, from which a tuning curve for each voxel can be
@@ -64,44 +64,41 @@ responses across voxels for an unknown stimulus can be used to
 estimate channel activation; (6) the weighted sum of these estimated
 channel activations by the basis set provides a continuous readout of
 the information present in the brain along the dimension of interest,
-which can be used as is or for decoding by finding the stimulus whose
-predicted channel activations (from step 2) are most correlated.
+which can be used as is or for decoding.
 
 \setlength{\columnsep}{20pt}
 \begin{wrapfigure}{R}{0.48\textwidth}
 \centering
 \includegraphics[width=.48\textwidth]{figs/inverse}
-\caption{\small Example reconstruction analysis. Linear regression was
+\caption{\small Reconstruction analysis. Linear regression was
 used to learn the tuning of voxels over a continuous space of novel
 Fourier descriptor shapes. The inverse of the resulting weight matrix
 was used to estimate the shape information present in a pattern of
 activity over voxels in a brain region during a separate task in which
 human subjects predicted which shape would appear on each trial.
-In this study, shapes could be reconstructed from visual cortex and
-hippocampus~\citep{Kok:2018}.}
+In this example, shapes were reconstructed from visual cortex~\citep{Kok:2018}.}
     \label{fig:hippo}
     \vskip2pt
 \end{wrapfigure}
 
 Although these methods are cutting-edge and powerful in cognitive
 neuroscience, and they come tantalizingly close to ''mind reading'',
-they are currently limited in two ways. First, they require an
+they are currently limited. Specifically, they generally require an
 assumption (for training and decoding) that the brain veridically
 represents the properties of the stimulus used as labels (e.g., known
 visual or semantic features). To the extent that attention filters the
 stimulus in some way, this changes the ground truth about which
-features the brain should be representing, inherently limiting
-reconstruction accuracy. Second, these methods are generally applied
-to stimuli with one or a small number of potential dimensions that are
-used for reconstruction. However, naturalistic stimuli are
-high-dimensional and dynamic, increasing the likelihood that people
-are shifting their attention between dimensions. We will thus extend
+features the brain should be representing, inherently capping
+reconstruction accuracy. This may be especially problematic for 
+naturalistic stimuli, which are high-dimensional and dynamic, 
+increasing the likelihood that people
+shift their attention between dimensions. We will extend
 these approaches by attempting to reconstruct from brain activity not
 only what stimulus information is present in each dimension but also
 to which dimension(s) attention is directed. We will deploy methods
 from machine learning that can uncover lower-dimensional traces
 through high-dimensional data to infer how attention is filtering the
-stimulus, even when the attentional focus during the training data is
+stimulus, even when the attentional focus in the training data is
 unknown (i.e., it was not manipulated or measured). Our
 overall goal is to improve decoding accuracy by reconstructing what is
 represented in the mind rather than what is presented to the eyes.
@@ -125,7 +122,7 @@ We will study mathematical formulations of attention as one approach
 to making assumptions for which learning is tractable in principle.
 In an attention-based model, the object of study is a
 lower-dimensional trace or curve through the high-dimensional input
-space. While the family of curves may be infinite dimensional, a
+space. Although the family of curves may be infinite dimensional, a
 locally sparse or ``focused'' representation is intended to make
 learning statistically and computationally tractable. Rudimentary
 versions of this notion appear in the machine learning literature in
@@ -139,17 +136,17 @@ algorithms based on recurrent neural networks
 (RNNs) \citep{bahdanau2014}. The attention mechanism is a type of
 alignment model, which is a key component of statistical translation
 methods \citep{Brown1993}. Attention has been applied to the problem of generating image
-descriptions by \cite{showtell}.
+descriptions by \citet{showtell}.
 
 \project{Attention-based latent embedding models}
 We will investigate the introduction of the attention-based metaphor into
 statistical learning using exponential family embedding models, latent
 variables, and multiple embedding characteristics as described in
-Objective 2 above. 
+Objective 2. 
 Recall from above that an exponential family embedding model uses a
 latent representation of the input and output variables. Consider the
 case of high dimensional density estimation, where the goal is to
-estimate a density $p(x)$ for $x\in\reals^d$.  A latent variable
+estimate a density $p(x)$ for $x\in\reals^d$. A latent variable
 embedding model takes the form
 $$ p(x) = \int p(z) \exp(\rho(x)^T \alpha(z) - \Psi_{\rho,\alpha}) \, dz$$
 where $z\in \reals^m$ is a latent Gaussian vector,
@@ -184,7 +181,6 @@ $\alpha(z)$ is defined in terms of, for instance, a feed-forward
 neural network, this can be viewed in the framework of variational auto-encoders
 \citep{kingma13}.
 
-
 \project{Applications to fMRI movie data}
 The public movie dataset mentioned earlier consists of 17 subjects
 watching a 90-minute episode of BBC's Sherlock while being scanned with
@@ -193,11 +189,11 @@ annotation of several dimensions of the movie, including: scene
 location, characters present, speaker, camera angle, music, arousal, and
 valence (i.e., positive or negative mood). Consider the task of
 reconstructing a person's subjective experience of the movie from their
-brain data. As described above, existing inverse modeling methods
-attempt to reproduce the visual or auditory stimulus presented to the
-subject. However, for naturalistic stimuli like a movie with multiple
-dimensions present, the limited capacity of human attention to a small
-number of dimensions ensures that this reproduction will fail. We are
+brain data and these annotations. As described above, existing inverse modeling
+methods would attempt to reproduce the stimuli present on screen along the
+annotated dimensions. However, for naturalistic stimuli like a movie with multiple
+dimensions present, the limited capacity of human attention for a small
+number of dimensions will hamper this reproduction (i.e.,. We are
 likely to only experience a subset of the input and which subset we
 experience will change over time. There are currently no principled
 techniques for characterizing this internal ''ground truth''. We will

@@ -98,9 +98,9 @@ understood brain systems and also the one that has had the
 greatest impact to date on machine learning.
 
 \setlength{\columnsep}{20pt}
-\begin{wrapfigure}{R}{0.45\textwidth}
+\begin{wrapfigure}{R}{0.40\textwidth}
 \centering
-\includegraphics[width=.44\textwidth]{figs/hipp-model}
+\includegraphics[width=.39\textwidth]{figs/hipp-model}
 \caption{\small Biologically plausible neural network model of the
 hippocampus. The network is trained to reproduce the pattern of
 activity in the input (EC\textsubscript{in}) on the output
@@ -127,9 +127,9 @@ provides input to the hippocampus, the structure critical for storing
 long-term memories~\citep{Squire:1992}. Within the hippocampus, there
 are four key subfields: dentate gyrus (DG), CA3, CA1, and
 subiculum~\citep{Deng:2010,Shohamy:2013}. They are
-connected via two pathways: the trisynaptic pathway (TSP) from ERC
+connected via two pathways (Fig. 3): the trisynaptic pathway (TSP) from ERC
 to DG, CA3, and CA1; and the monosynaptic pathway (MSP) from ERC to
-CA1~\citep{Schapiro:2017}. The hippocampus has two sources of
+CA1. The hippocampus has two sources of
 recurrence that allow it to bridge over time: locally within CA3 and
 as a result of CA1 output to ERC that re-enters as
 input~\citep{Kumaran:2016}. The function of the TSP is to
@@ -164,40 +164,6 @@ Embedding algorithms give representations well suited for downstream
 algorithms. Sometimes they are learned in the first layer of
 a deep neural network ~\citep{Bengio:2003}.  
 
-Embeddings can be useful for many data types. For example, the popular
-music entertainment site Spotify constructs embeddings of songs from
-millions of user playlists, and uses these as the basis for
-recommending new songs.  (``If you liked song $x\in\reals^{500}$,
-perhaps you'll like the nearby song $x'\in\reals^{500}$.'')  This
-machine learning based system eclipsed Pandora, which was based on a
-hand-constructed representation, the ``music genome.'' Yet current
-embedding algorithms such as the popular \texttt{word2vec} algorithm
-are based on little more than a low-rank approximation (PCA) of simple
-co-occurrence statistics.
-
-Embeddings algorithms become more flexible when they are based
-on statistical models, for instance using exponential family
-models \citep{Rudolph:2016b,spherical}.
-Consider a corpus of language $\mbx = \{x_1, \ldots, x_n\}$, where
-each $x_i$ is a word from a vocabulary of terms. An exponential family
-embedding has three components: (a) a notion of context for
-each data point, e.g., a window of observed words around each word (b)
-a form of the conditional distribution, e.g., for text a
-categorical distribution over $V$ items is appropriate and (c) an
-embedding structure that describes how parameters are shared
-across data, e.g., for text one may assume that each term (such as
-``walnut'' or ``bicycle'') shares the same representations wherever it
-appears in the collection.
-An exponential family embedding
-posits two $d$-dimensional latent representations for each term $v$,
-one is the embedding vector $\rho_v$ and the other is the
-context vector $\alpha_v$, where $d$ is a hyperparameter.  The
-model asserts that each observation is drawn from a conditional
-distribution given its context. 
-Exponential family embeddings generalize many existing methods for
-learning distributed representations, including 
-many variants of word2vec~\citep{Mikolov:2013}.  
-
 
 \setlength{\columnsep}{20pt}
 \begin{wrapfigure}{R}{0.45\textwidth}
@@ -212,8 +178,41 @@ Interactive exploration of the embeddings
 using a Google maps interface: \href{http://www.cs.cornell.edu/~ginsparg/arxiv/gmaps2.html}{cs.cornell.edu/~ginsparg/arxiv/gmaps2.html}.
 }
     \label{fig:arxiv}
-    \vskip2pt
+    \vskip-10pt
 \end{wrapfigure}
+
+Embeddings can be useful for many data types (Fig. 4). For example, the popular
+music entertainment site Spotify constructs embeddings of songs from
+millions of user playlists, and uses these as the basis for
+recommending new songs.  (``If you liked song $x\in\reals^{500}$,
+perhaps you'll like the nearby song $x'\in\reals^{500}$.'')  This
+machine learning based system eclipsed Pandora, which was based on a
+hand-constructed representation, the ``music genome.'' Yet current
+embedding algorithms such as the popular \texttt{word2vec} algorithm
+are based on little more than a low-rank approximation (PCA) of simple
+co-occurrence statistics.
+
+Embedding algorithms become more flexible when based
+on statistical models, such as exponential family
+models \citep{Rudolph:2016b,spherical}.
+Consider a corpus of language $\mbx = \{x_1, \ldots, x_n\}$, where
+each $x_i$ is a word from a vocabulary of terms. An exponential family
+embedding has three components: (1) a notion of context for
+each data point, e.g., a window of observed words around each word, (2)
+a form of the conditional distribution, e.g., for text a
+categorical distribution over $V$ items is appropriate, and (3) an
+embedding structure that describes how parameters are shared
+across data, e.g., for text, one may assume that each term (e.g.,
+``walnut'' or ``bicycle'') shares the same representations wherever it
+appears in the collection.
+An exponential family embedding
+posits two $d$-dimensional latent representations for each term $v$,
+one is the embedding vector $\rho_v$ and the other is the
+context vector $\alpha_v$, where $d$ is a hyperparameter. The
+model asserts that each observation is drawn from a conditional
+distribution given its context. 
+Exponential family embeddings generalize existing methods for
+learning distributed representations, including variants of word2vec~\citep{Mikolov:2013}.
 
 Fitting such models is difficult, and requires robust methods for
 computation and evaluation.  Variational inference approximates the
@@ -238,20 +237,19 @@ algorithms, inspired by current knowledge of higher-level cognition.
 \project{Representations beyond co-occurrence statistics}
 Distributed embedding representations in machine learning are almost
 always based on co-occurrence statistics. For instance, when
-constructing embeddings for words in text, names of colors (``red,''
-``blue''...) will be nearby because they
+constructing embeddings for words in text, names of colors will be nearby because they
 tend to be used together. How can a richer knowledge of representation
 in the brain inspire algorithms for processing text,
 images, and audio? As discussed above, brain systems 
 ``embed'' in different ways, for example: visual cortex/appearance, frontotemporal
-cortex/concepts, ventral striatum/reward, hippocampus/co-occurrence.
-We will explore a wide variety of new machine learning models 
+cortex/function, ventral striatum/reward, hippocampus/co-occurrence.
+We will explore a variety of new machine learning models 
 for representing data, using brain function as inspiration
 for coding different aspects of data. For instance,
 one embedding component learned in a reinforcement learning
-setting might correspond to processing in orbitofrontal cortext;
-another embedding component based on semantic parsing of scenes might correspond to processing in
-the frontotemporal cortex. 
+setting may correspond to processing in orbitofrontal cortex;
+another embedding component based on semantic parsing of scenes may correspond to processing in
+frontotemporal cortex. 
 %Steps in such directions, have
 %rguably made in recent work \citep{replearn}. 
 The framework of exponential family embeddings and variational
