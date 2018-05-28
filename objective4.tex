@@ -95,7 +95,8 @@ game.  Other work on tradeoffs in statistical learning includes
 \citep{lucic15tradeoffs}. Insights from neuroscience could inform novel algorithms for reducing
 memory in artificial learning algorithms.
 
-Work over the past 3-5 years has analyzed a range nonconvex
+We will pursue a formalization of memory based on generative models
+and nonconvex optimization. Work over the past 3-5 years has analyzed a range nonconvex
 optimization problems, including phase retrieval, compressed
 sensing under sparsity constraints, low-rank matrix
 completion, and randomized sensing of low rank matrices
@@ -153,16 +154,14 @@ example, a synthetic image.  We will study models of memory in
 cognition that are based on inverting generative/decoder networks. The
 work \cite{HandV17} mentioned above shows that if $G(z)$ is such a
 network with random weights, and $A$ is a random matrix, then the
-empirical risk function $ f_x(z) = \|AG(z) - Ax\|_2^2$ is remarkably
-well-behaved. Specifically, under natural conditions on the scaling of
-the network size, the function $f_x(z)$ has no local optima or
-critical points (outside of two neighborhoods around the optima). We
-will investigate computational questions in this setting motivated by
-simplified notions of memory, plasticity and learning in the
-brain. For example, as the network is fed data, the initially random
-weight matrices are optimized to learn to code for those data.  During
-this learning phase, the weights are reconfigured (plasticity), and
-the function $f_x(z)$ becomes highly nonconvex. We will study
+empirical risk function $ f_x(z) = \|AG(z) - Ax\|_2^2$ has no local
+optima or critical points (outside of two neighborhoods around the
+optima). We will investigate computational questions in this setting
+motivated by simplified notions of memory, plasticity and learning in
+the brain. For example, as the network is fed data, the initially
+random weight matrices are optimized to learn to code for those data.
+During this learning phase, the weights are reconfigured (plasticity),
+and the function $f_x(z)$ becomes highly nonconvex. We will study
 algorithmic techniques where the descent directions at intermediate
 points are remembered (or ``memoized'') during this learning phase. As
 the landscape becomes highly nonconvex, these previous descent
