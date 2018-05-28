@@ -278,12 +278,12 @@ in][]{Vodrahalli:2017}.
 
 \project{Time-dependent, multiscale representations}
 As discussed above, known computational properties of the hippocampus
-including pattern separation, different learning rates, and bridging
+such as pattern separation, different learning rates, and bridging
 over time, have not yet entered the mainstream of machine learning.
 We will study new learning architectures that attempt to mimic, even
-if only as a computational metaphor, these capabilities in cognition.
-To capture dependence on time, we will earlier work on dynamic topic
-models~\citep{Blei:2006d}. Dynamic topic models capture how the
+if only as a computational metaphor, these capabilities.
+To capture dependence on time, we will extend earlier work on dynamic topic
+models~\citep{Blei:2006d}. These models capture how
 latent themes in a collection can grow and shrink and change over
 time. By introducing multiple latent time series threads in such a
 model, each having a different time scale, we can model different
@@ -291,5 +291,5 @@ learning rates. Dynamic topic models were
 developed specifically for language.  We will generalize this idea to
 capture the evolution of distributed representations over time. In
 the exponential family embedding framework, this amounts to placing a
-linear dynamic prior on the embedding vectors or the context vectors,
+linear dynamic prior on the embedding vectors, context vectors,
 or both.
