@@ -106,64 +106,61 @@ hippocampus. The network is trained to reproduce the pattern of
 activity in the input (EC\textsubscript{in}) on the output
 (EC\textsubscript{out}). Three hidden layers (DG, CA3, and CA1) learn
 representations to support this mapping, with activity flow governed
-by projections indicated by the arrows. The TSP, in blue
-arrows, supports encoding into episodic memory via pattern separation
+by projections indicated by arrows. The TSP (blue
+arrows) supports encoding into episodic memory via pattern separation
 in DG and CA3 and retrieval via pattern completion within CA3. The
-MSP, in green arrows, supports statistical learning of
+MSP (green arrows) supports statistical learning of
 regularities across episodes. The height/yellowness of a unit both
-index its activity level. From ~\citet{Schapiro:2017}.}
+reflect its activity level. From ~\citet{Schapiro:2017}.}
     \label{fig:hipp}
     \vskip-10pt
 \end{wrapfigure}
 
-Most models of ventral visual processing treat IT as the top of
-the hierarchy. However, IT is heavily interconnected with
+Most models of the ventral stream treat IT as top of
+the hierarchy~\citep[cf.][]{Saksida:2010}. However, IT is heavily interconnected with
 the next most anterior areas, perirhinal cortex (PRC) and
 parahippocampal cortex (PHC), which show selectivity for
 objects and scenes,
 respectively~\citep{Barense:2010,Davachi:2006,Ranganath:2012}. The PRC
 and PHC project to the entorhinal cortex (ERC). The ERC in turn
-provides input to the hippocampus, which is critical for storing
+provides input to the hippocampus, the structure critical for storing
 long-term memories~\citep{Squire:1992}. Within the hippocampus, there
 are four key subfields: dentate gyrus (DG), CA3, CA1, and
 subiculum~\citep{Deng:2010,Shohamy:2013}. They are
-connected to form two pathways: the trisynaptic pathway (TSP) from ERC
+connected via two pathways: the trisynaptic pathway (TSP) from ERC
 to DG, CA3, and CA1; and the monosynaptic pathway (MSP) from ERC to
-CA1~\citep{Schapiro:2017}. The hippocampus also has two sources of
+CA1~\citep{Schapiro:2017}. The hippocampus has two sources of
 recurrence that allow it to bridge over time: locally within CA3 and
 as a result of CA1 output to ERC that re-enters as
-input~\citep{Kumaran:2016}. The function of the TSP circuit is to
-memorize specific input patterns from ERC, supporting ``episodic''
+input~\citep{Kumaran:2016}. The function of the TSP is to
+memorize specific input patterns, supporting ``episodic''
 memory for individual moments in space and time (e.g., where I parked
-my car this morning). This poses two computational challenges: the
+my car this morning). This poses two challenges: (1) the
 patterns need to be learned ``one-shot'' in that we never experience
-the exact same episode twice, and it is critical to avoid interference
-from related memories (e.g., where I parked by car yesterday). The TSP
+the exact same episode twice, and (2) it is critical to avoid interference
+from related memories (e.g., where I parked my car yesterday). The TSP
 solves these challenges with \textit{pattern
 separation}~\citep{Leutgeb:2007,Yassa:2011,Rolls:2016}: large capacity,
-strong inhibition, and partial connectivity in DG and then CA3 lead to
+strong inhibition, and partial connectivity in DG and CA3 lead to
 sparse, orthogonal representations of even highly overlapping ERC
-input patterns that share sensory features (e.g., tend to park in
-the same neighborhood, at the same time of day, in the same vehicle,
-etc.). The resulting memories are complex, unfurling over space and
-time with input from different modalities, and these different
+inputs. The resulting memories are complex, unfurling over space and
+time in different modalities, and these
 components are linked via the auto-associative connections in
 CA3~\citep{Wallenstein:1998}. By discounting feature overlap across
-episodes and binding even arbitrary features within episodes, such
-spatiotemporal co-occurrence dominates hippocampal representation, allowing for recall of individual experiences.
+episodes and binding arbitrary features within episodes,
+spatiotemporal co-occurrence dominates hippocampal representation.
 Whereas theoretical models of the hippocampus from the connectionist
 tradition have been around a long time and employ multi-layer
 networks~\citep{McClelland:1995,Norman:2003}, the computational
-properties of the hippocampus (e.g., pattern separation, different
-learning rates, bridging over time, relational binding, etc.) have not
-yet entered the mainstream of machine learning.
+properties of the hippocampus (e.g., pattern separation, learning rules and rates, 
+bridging over time, relational binding, etc.) are not mainstream in machine learning.
 
 \statbackground{}
 Data representation algorithms are an important ingredient in contemporary
-machine learning methodology. A particular type, called embeddings, are used to represent
-categorical data---for example words in a natural language text---as
-dense, high dimensional ($d\approx 500$) vectors in Euclidean space \citep{Mikolov:2013}.
-Embedding algorithms give representations that are well suited for downstream
+machine learning. One type, called embeddings, are used to represent
+categorical data---for example, words in a natural language text---as
+dense, high-dimensional ($d\approx 500$) vectors in Euclidean space \citep{Mikolov:2013}.
+Embedding algorithms give representations well suited for downstream
 algorithms. Sometimes they are learned in the first layer of
 a deep neural network ~\citep{Bengio:2003}.  
 
@@ -262,13 +259,13 @@ The framework of exponential family embeddings and variational
 inference provide powerful tools for this investigation.
 
 
-\project{Models for fMRI data}
-In the other direction, from machine learning to cognitive
-neuroscience, we believe that latent variable models and exponential family embeddings are
-promising tools for advanced data analysis for fMRI.
-[{\it Nick -- if you want to write a few sentences about the methodologies
-that dominate fMRI analysis now, I can then try to comment on
-how new machine learning methodologies might be applied.}]
+%\project{Models for fMRI data}
+%In the other direction, from machine learning to cognitive
+%neuroscience, we believe that latent variable models and exponential family embeddings are
+%promising tools for advanced data analysis for fMRI.
+%[{\it Nick -- if you want to write a few sentences about the methodologies
+%that dominate fMRI analysis now, I can then try to comment on
+%how new machine learning methodologies might be applied.}]
 
 
 \project{Time-dependent, multiscale representations}
