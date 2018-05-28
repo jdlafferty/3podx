@@ -186,25 +186,26 @@ neural network, this can be viewed in the framework of variational auto-encoders
 
 
 \project{Applications to fMRI movie data}
-A useful public
-dataset for examining notions of attention, including machine
-learning models, is comprised of 17 subjects who watched a 90 minute
-episode of Sherlock while being scanned with fMRI
-\citep{chen17,baldassano17}. We have a
-frame-by-frame annotation of several dimensions of the movie.
-Consider the task of reconstructing a person's subjective experience
-of a movie from their brain data. Existing inverse modeling methods
-attempt to reproduce the pixels of the photos or movie frames being
-shown to the person, but if the human brain only represents a subset
-of this information these models have an inherent performance
-ceiling. Pixels are not ground truth for the brain. Yet 
-there is likely to be no principled way to characterize the internal ``ground
-truth.'' Moreover, the internal focus will vary from moment to moment. 
-We will carry out work that exploits this annotated data set,
-to align the different dimensions of the movie with the brain activity
-present in the fMRI time series. This will provide a measure of
-how the attentional trace of the observer changes dynamically over
-time, which can then be modeled using latent variable models.
+The public movie dataset mentioned earlier consists of 17 subjects
+watching a 90-minute episode of BBC's Sherlock while being scanned with
+fMRI~\citep{chen17,baldassano17}. We also have a frame-by-frame
+annotation of several dimensions of the movie, including: scene
+location, characters present, speaker, camera angle, music, arousal, and
+valence (i.e., positive or negative mood). Consider the task of
+reconstructing a person's subjective experience of the movie from their
+brain data. As described above, existing inverse modeling methods
+attempt to reproduce the visual or auditory stimulus presented to the
+subject. However, for naturalistic stimuli like a movie with multiple
+dimensions present, the limited capacity of human attention to a small
+number of dimensions ensures that this reproduction will fail. We are
+likely to only experience a subset of the input and which subset we
+experience will change over time. There are currently no principled
+techniques for characterizing this internal ''ground truth''. We will
+exploit this annotated dataset to align the different dimensions of the
+movie with the fMRI time series. Using an attention-based and dynamic
+exponential family embedding model with multiple embeddings, we will
+attempt to read out the attentional trace of the observer over time.
+
 
 \project{Learning complexity under attention}
 Classical statistical theory characterizes the complexity of
