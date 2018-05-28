@@ -22,6 +22,7 @@
 \usepackage{stmaryrd}
 \usepackage{multicol,multirow}
 \usepackage{colortbl}
+\usepackage{fixltx2e}
 
 \SetSymbolFont{stmry}{bold}{U}{stmry}{m}{n}
 
@@ -53,8 +54,8 @@
 \newcounter{subproposal}
 \newcounter{subsubproposal}
 
-\def\msection#1{\vskip30pt\stepcounter{proposal}\setcounter{subproposal}{0}\noindent
-   {\bf\Large \arabic{proposal}.\enspace #1}\vskip8pt\noindent}
+\def\msection#1{\vskip20pt\stepcounter{proposal}\setcounter{subproposal}{0}\noindent
+   {\bf\Large \arabic{proposal}.\enspace #1}\vskip1pt\noindent}
 \def\msubsection#1{\vskip10pt\stepcounter{subproposal}\noindent
    {\bf\large \arabic{proposal}.\arabic{subproposal}.\enspace #1}\enspace\vskip5pt}
 \def\msubsubsection#1{\vskip10pt\stepcounter{subsubproposal}\noindent
