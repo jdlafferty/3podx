@@ -67,6 +67,22 @@ the information present in the brain along the dimension of interest,
 which can be used as is or for decoding by finding the stimulus whose
 predicted channel activations (from step 2) are most correlated.
 
+\setlength{\columnsep}{20pt}
+\begin{wrapfigure}{R}{0.5\textwidth}
+\centering
+\includegraphics[width=.49\textwidth]{figs/inverse}
+\caption{\small Example reconstruction analysis. Linear regression was
+used to learn the tuning of voxels over a continuous space of novel
+Fourier descriptor shapes. The inverse of the resulting weight matrix
+was used to estimate the shape information present in a pattern of
+activity over voxels in a brain region during a separate task in which
+human subjects predicted which shape would appear on each trial.
+In this study, shapes could be reconstructed from visual cortex and
+hippocampus~\citep{Kok:2018}.}
+    \label{fig:hipp}
+    \vskip2pt
+\end{wrapfigure}
+
 Although these methods are cutting-edge and powerful in cognitive
 neuroscience, and they come tantalizingly close to ''mind reading'',
 they are currently limited in two ways. First, they require an
@@ -86,7 +102,7 @@ to which dimension(s) attention is directed. We will deploy methods
 from machine learning that can uncover lower-dimensional traces
 through high-dimensional data to infer how attention is filtering the
 stimulus, even when the attentional focus during the training data is
-unknown (e.g., because it was not manipulated or measured). Our
+unknown (i.e., it was not manipulated or measured). Our
 overall goal is to improve decoding accuracy by reconstructing what is
 represented in the mind rather than what is presented to the eyes.
 

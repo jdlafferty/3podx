@@ -141,6 +141,25 @@ properties of the hippocampus (e.g., pattern separation, different
 learning rates, bridging over time, relational binding, etc.) have not
 yet entered the mainstream of machine learning.
 
+\setlength{\columnsep}{20pt}
+\begin{wrapfigure}{R}{0.45\textwidth}
+\centering
+\includegraphics[width=.44\textwidth]{figs/hipp-model}
+\caption{\small Biologically plausible neural network model of the
+hippocampus. The network is trained to reproduce the pattern of
+activity in the input (EC\textsubscript{in}) on the output
+(EC\textsubscript{out}). Three hidden layers (DG, CA3, and CA1) learn
+representations to support this mapping, with activity flow governed
+by projections indicated by the arrows. The TSP, in blue
+arrows, supports encoding into episodic memory via pattern separation
+in DG and CA3 and retrieval via pattern completion within CA3. The
+MSP, in green arrows, supports statistical learning of
+regularities across episodes. The height/yellowness of a unit both
+index its activity level. From ~\citet{Schapiro:2017}.}
+    \label{fig:hipp}
+    \vskip2pt
+\end{wrapfigure}
+
 \statbackground{}
 Data representation algorithms are an important ingredient in contemporary
 machine learning methodology. A particular type, called embeddings, are used to represent
@@ -192,7 +211,7 @@ many variants of word2vec~\citep{Mikolov:2013}.
 \caption{\small Embeddings of words appearing in scientific articles
 posted on the arXiv, mapped from 200 to two dimensions using
 t-SNE \citep{ginsparg}. Constructed using only three months of
-arXiv articles, for a 130,000 word vocbulary---using more data
+arXiv articles, for a 130,000 word vocabulary---using more data
 leads to better embeddings.
 Interactive exploration of the embeddings
 using a Google maps interface: \href{http://www.cs.cornell.edu/~ginsparg/arxiv/gmaps2.html}{cs.cornell.edu/~ginsparg/arxiv/gmaps2.html}.
