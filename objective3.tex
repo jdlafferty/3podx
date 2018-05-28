@@ -77,7 +77,7 @@ was used to estimate the shape information present in a pattern of
 activity over voxels in a brain region during a separate task in which
 human subjects predicted which shape would appear on each trial.
 In this example, shapes were reconstructed from visual cortex~\citep{Kok:2018}.}
-    \label{fig:hippo}
+    \label{fig:inverse}
     \vskip2pt
 \end{wrapfigure}
 
@@ -189,18 +189,20 @@ annotation of several dimensions of the movie, including: scene
 location, characters present, speaker, camera angle, music, arousal, and
 valence (i.e., positive or negative mood). Consider the task of
 reconstructing a person's subjective experience of the movie from their
-brain data and these annotations. As described above, existing inverse modeling
+brain data and these annotations. As described earlier, existing inverse modeling
 methods would attempt to reproduce the stimuli present on screen along the
-annotated dimensions. However, for naturalistic stimuli like a movie with multiple
-dimensions present, the limited capacity of human attention for a small
-number of dimensions will hamper this reproduction (i.e.,. We are
-likely to only experience a subset of the input and which subset we
-experience will change over time. There are currently no principled
-techniques for characterizing this internal ''ground truth''. We will
+annotated dimensions. However, for complex, naturalistic stimuli like a movie,
+with multiple dimensions present, the limited capacity of human attention for a small
+number of dimensions will hamper this reproduction. Specifically, these models
+would fail to reconstruct a stimulus from an \textit{unattended} dimension,
+insofar as this information is not represented in the brain. 
+We are likely to only experience a subset of the input and this subset will
+change over time. There are currently no principled
+techniques for characterizing this internal ground truth. We will
 exploit this annotated dataset to align the different dimensions of the
 movie with the fMRI time series. Using an attention-based and dynamic
-exponential family embedding model with multiple embeddings, we will
-attempt to read out the attentional trace of the observer over time.
+exponential family embedding model with multiple embeddings, as above, we will
+attempt to read out the attentional trace of the observer over time from their brain activity.
 
 
 \project{Learning complexity under attention}
@@ -208,11 +210,11 @@ Classical statistical theory characterizes the complexity of
 estimation and inference tasks in terms of minimax rates of
 convergence. Parametric problems have risk (expected squared error)
 that scales as $R_n \asymp p/n$ when there are $p$ parameters and $n$
-samples. In the high dimensional sparse regime, research over the past
+samples. In the high-dimensional sparse regime, research over the past
 decade has shown that the risk scales as $R_n \asymp s \log p/n$ 
-in a rich array of settings, where $s$ is the intrinsic dimension or
+in a wide array of settings, where $s$ is the intrinsic dimension or
 sparsity level. For nonparametric sparse additive
-models \citep{Ravikumar:08}, it is known that the risk
+models \citep{Ravikumar:08}, the risk
 scales (informally) as $\tilde O(s n^{-\alpha})$ where $n^{-\alpha}$ is 
 the minimax rate for the underlying function space;
 e.g., for an $m$-th order Sobolev space we have
@@ -220,11 +222,12 @@ $\alpha = 2m/(2m+1)$. These complexity results can be established using
 the tools of empirical process theory, covering numbers, and metric
 entropies. We will consider a series of mathematical formalizations
 of attention, and investigate corresponding minimax rates of 
-convergence, and bounds on approxmation errors in different settings.
+convergence, and bounds on approximation errors in different settings.
 As a concrete example, consider a regression model where the regression function 
 has an attention component, expressed as 
+\vskip-10pt
 $$ \E(Y\given x) = \int f(A_t^T x_{S_t}) \, dt.$$
-This can be considered as a form of semiparametric single-index model
+This can be considered a form of semiparametric single-index model
 \citep{horowitz09,horowitz96,ichimura93,kakade11,negahban12} 
 and we anticipate that we can characterize
 the minimax complexity of estimating such models. We will also investigate
