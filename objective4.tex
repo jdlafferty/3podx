@@ -4,11 +4,11 @@
 \label{sec:aim4}
 
 Given that the number of neurons in the brain is relatively fixed~\citep{Pakkenberg:1997,West:1994}, there must be a tradeoff between the number of
-memories that can be stored and the fidelity with which they are
-stored. This is reflected in memory errors, interference, competition,
+memories that can be stored and their fidelity.
+This is reflected in memory errors, interference, competition,
 and decay. However, there is also behavioral evidence that
-humans store a massive number of items in long-term memory with
-incredible detail~\citep[see][]{Brady:2011}. How is this possible?
+we can store a massive number of items in long-term memory with
+vivid detail~\citep[see][]{Brady:2011}. How is this possible?
 Computational architectures and insights could inform simple
 experiments to better understand the nature of memory usage in living
 systems. For example, recent work in deep learning has investigated
@@ -19,65 +19,61 @@ we will explore learning frameworks treating memory in terms of
 inversion of generative processes.
 
 \biobackground{}Human memory is a paradox, at once exquisite, as when
-a photograph transports us back through time to relive a past event,
-and at other times elusive and unreliable, as when trying to recall a
-colleague's name. Indeed, most cognitive neuroscience research on
-human memory views it as adaptively fallible and
-distorted~\citep{Schacter:2011}. Unlike a hard drive, related
-memories overlap and interact with each other in the brain even when
-supposedly dormant, leading to the creation of false memories and forgetting of competing memories~\citep{Kim:2014,Wimber:2015}. In
-this context, it is surprising that
+a photograph transports us through time,
+and other times unreliable, as when trying to recall a name. 
+Most cognitive neuroscience research on
+memory views it as adaptively fallible~\citep{Schacter:2011}. Unlike a hard drive, related
+memories overlap and interact with each other in the brain, leading to false memories and forgetting of competing memories~\citep{Kim:2014,Wimber:2015}. It is thus surprising that
 humans~\citep{Standing:1973,Brady:2008} and non-human
-primates~\citep{Woloszyn:2012,Meyer:2018} can remember
+primates~\citep{Woloszyn:2012,Meyer:2018} remember
 hundreds or thousands of visual images with remarkable detail. For
 example, ~\citet{Brady:2008} presented human subjects with 2,500
-objects for 3 s each. Memory was tested afterward by having them
-choose which of two objects presented on each trial had been studied
-before. Critically, one of the objects was an exact match to earlier
-(i.e., familiar target) and the other object (i.e., novel foil) varied
+objects for 3 s each. Memory was tested afterward by having subjects
+choose which of two objects on each test trial had been studied
+before. Critically, one of the objects (i.e., familiar target) was an exact match
+and the other object (i.e., novel foil) varied
 in similarity to the target. If the studied objects remained in
 memory despite long delays and many intervening items, subjects
 should reliably choose the target. Insofar as these memories
-are detailed and precise, accuracy should be high even when the novel
+are precise, accuracy should be high even when the novel
 foil was highly similar to the target (e.g., if the target
-was a breadbox with a loaf of bread inside, a highly similar ''state
-change'' foil would be the same breadbox and loaf, but with the loaf
+was a breadbox with a loaf of bread inside, a highly similar foil 
+would be the same breadbox and loaf, but with the loaf
 sitting in front). Indeed, accuracy on such trials was 87\% on average
 relative to 50\% chance, for thousands of objects seen once, which was
 only a little worse than if the foil (93\%) was completely unrelated
-and coarser memory would suffice (e.g., breadbox vs. remote control).
+(e.g., breadbox vs. remote control).
 
-These kinds of detailed, one-shot (or \textit{episodic}) memories,
-formed within minutes or hours, are thought to be initially dependent
-on the hippocampus (see Objective 2). This raises the question of how
-such a small mass of tissue is able to store thousands of images in a
-short time without much loss in precision. Indeed, the problem of the
-storage capacity of the hippocampus has been studied for a long time.
-For example, ~\citet{Marr:1971} argued that 100,000 memories could be
-stored there, corresponding roughly to the number of seconds in a day,
-and that these memories would be offloaded to higher-capacity
-neocortex during sleep each night, resetting the counter. There are
-several possible solutions to this problem, including reducing the
-number of units used for each memory (i.e., sparse coding), increasing
-the number of units available for representation, or accelerating
-forgetting and decay~\citep{McNaughton:1987}, as well as by expanding
-the building blocks and sites of memory beyond synapses to include
-biochemical cascades~\citep{Fusi:2005}. More generally, theoretical
-estimates of the storage capacity of neural networks with distributed
-memories suggest that it is a fraction of the number of units
-and also depends on connectivity~\citep{Hopfield:1982,Brunel:2016}.
+These detailed, one-shot \textit{episodic} memories,
+formed in minutes or hours, are thought to initially be dependent
+on the hippocampus (Objective 2). This raises the question of how
+such a small mass of tissue can store thousands of images in a
+short time without loss in precision or confusion. The 
+storage capacity of the hippocampus has long been studied;
+for example, although likely wrong in the details,~\citet{Marr:1971} 
+argued that 100,000 memories could be
+stored there, roughly the number of seconds in a day,
+and that these memories were offloaded to higher-capacity
+neocortex during sleep. There are
+several possible routes to higher capacity~\citep{McNaughton:1987}: reducing the
+number of units used for each memory, increasing
+the overall number of units available for representation, and/or accelerating
+forgetting and decay; as well as accounting for biochemical cascades~\citep{Fusi:2005}.
+More generally, theoretical
+analysis of neural networks with distributed
+memory suggest that storage capacity is limited to a small fraction of the number of units and depends on connectivity~\citep{Hopfield:1982,Brunel:2016}.
 
-\statbackground{} Memory is a foundational theme throughout the broad
-landscape computation. In information theory, the notion of memory was
+\statbackground{} Memory is a foundational theme throughout the
+landscape of computation. In information theory, the notion of memory was
 probed in Shannon's landmark paper, which presaged hidden Markov
 models in the discussion of finite state models of language, with a
-state representing the ``residue of influence'' of the previous
-letters \citep{Shannon:48}. A rich mathematical literature exists that
+state representing the ``residue of influence'' of previous
+letters\citep{Shannon:48}. A rich literature 
 explores the mathematical properties of finite and infinite stochastic
 processes with respect to notions of memory, including mixing
-properties of chains \citep{pollard84}. Popular neural network models
+properties of chains\citep{pollard84}. Popular neural network models
 for more flexibly handling long-range dependence include LSTMs and
-their variants \citep{sepp97,gers00}. This latter work serves to
+variants\citep{sepp97,gers00}. This latter work serves to
 remind us that even simple metaphors for learning in humans, when
 implemented in scalable and easily available code, can lead to methods
 having great impact in contemporary applications.
@@ -86,11 +82,11 @@ Recent work in deep learning has investigated
 strategies for reducing memory usage \citep{ChenXZG16}. During a
 forward pass, only a subset of the nodes' activations are kept in
 memory, and the others are discarded. In back-propagation, the
-computation is redone at the forgotten nodes. This induces a trade-off
+computation is redone at the forgotten nodes. This induces a tradeoff
 between time complexity and memory. The practical problem is to
 determine the subset of nodes to checkpoint, given the network and a
 memory budget. The tradeoff can be thought of in terms a simple pebble
-game.  Other work on tradeoffs in statistical learning includes
+game. Other work on tradeoffs in statistical learning includes
 \citep{lucic15tradeoffs}. Insights from neuroscience could inform novel algorithms for reducing
 memory in artificial learning algorithms.
 
@@ -98,20 +94,20 @@ We will pursue a formalization of memory based on generative models
 and nonconvex optimization. Work over the past 3-5 years has analyzed a range nonconvex
 optimization problems, including phase retrieval, compressed
 sensing under sparsity constraints, low-rank matrix
-completion, and randomized sensing of low rank matrices
+completion, and randomized sensing of low-rank matrices
 \citep{phaselift1,phaselift2,phaselift3,ZhaWanLiu15,WeiCaiCha16,ZheLaf15}.
-Some of this work demonstrates that the local optima are either
+Some of this work demonstrates that local optima are either
 non-existent, or can be avoided by simple initialization schemes. Many
-of the results make assumptions of random problem instances.  Very
+of the results make assumptions of random problem instances. Very
 recent work has established technical results toward showing it is
 possible to invert randomly constructed deep networks. For example,
-\cite{HandV17} consider networks that compose multiple ReLU-transformed affine
+\citet{HandV17} consider networks that compose multiple ReLU-transformed affine
 maps, and show that the inversion objective function for such networks, based
 on empirical risk minimization, does not have spurious stationary
 points. Thus there is a descent direction at any point away from an optimal solution.
-\cite{Mixon18} make use of the machinery of spherical harmonics and Gegengauer polynomials for
+\citet{Mixon18} make use of the machinery of spherical harmonics and Gegengauer polynomials for
 establishing inversion algorithms for certain two-layer
-networks. Together with more recent results of \cite{HandV18}, this
+networks. Together with more recent results of \citet{HandV18}, this
 line of work begins to establish compressed sensing theory for a rich
 family of generative models.
 
@@ -121,12 +117,12 @@ family of generative models.
 % risk bounds as a function of memory in density estimation
 
 \project{Nonparametric estimation with memory constraints}
-As discussed in Section~2, recent work has established 
+As discussed in Objective 1, recent work has established 
 sharp constrained minimax analysis of nonparametric
 regression under quantization and communication
 constraints.
 It is of interest to understand how memory restrictions might affect
-statistical rates of convergence. While this earlier work focuses on
+statistical rates of convergence. Although this earlier work focuses on
 normal means formulations, a more practical framework for
 nonparametric estimation is local averaging using kernels. In
 classical theory, the actual form of the kernel does not affect the
@@ -141,29 +137,27 @@ and derive minimax results under such memory constraints. The
 Tsybakov low-noise condition will be used to allow for
 high-dimensional learning \citep{mammen1999,tsybakov2004,audibert2007}.
 
-
-
 \project{Inversion of nonconvex generative models using memory landmarks}
 Many practical systems are constructed with deep convolutional
-networks using ReLUs; these represent hierarchical compression
+networks using ReLUs, which represent hierarchical compression
 schemes. Their corresponding generative counterparts are ``decoder
 networks'' which take a dense Gaussian input and expand it to, for
-example, a synthetic image.  We will study models of memory in
-cognition that are based on inverting generative/decoder networks. The
-work \cite{HandV17} mentioned above shows that if $G(z)$ is such a
+example, a synthetic image. We will develop models of memory in
+cognition based on inverting generative/decoder networks. The
+work mentioned above~\citep{HandV17} shows that if $G(z)$ is such a
 network with random weights, and $A$ is a random matrix, then the
 empirical risk function $ f_x(z) = \|AG(z) - Ax\|_2^2$ has no local
 optima or critical points (outside of two neighborhoods around the
 optima). We will investigate computational questions in this setting
-motivated by simplified notions of memory, plasticity and learning in
+motivated by our understanding of learning and memory in
 the brain. For example, as the network is fed data, the initially
 random weight matrices are optimized to learn to code for those data.
-During this learning phase, the weights are reconfigured (plasticity),
+During this learning phase, the weights are reconfigured (i.e., plasticity occurs),
 and the function $f_x(z)$ becomes highly nonconvex. We will study
 algorithmic techniques where the descent directions at intermediate
-points are remembered (or ``memoized'') during this learning phase. As
-the landscape becomes highly nonconvex, these previous descent
-directions are landmarks used for searching and decoding the nonconvex
+points are remembered (or ``memorized'') during the learning phase. As
+the landscape becomes nonconvex, these previous descent
+directions can be used as landmarks for searching and decoding the nonconvex
 objective by gradient descent. The learned decoder is used to assess
 future data against past experience.
 
